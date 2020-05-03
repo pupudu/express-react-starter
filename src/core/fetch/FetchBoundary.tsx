@@ -9,7 +9,7 @@ export const FetchBoundary: React.FC = ({ children, ...props }) => {
       {...props}
       fallback={
         <Flex alignItems="center" justifyContent="center" height="50vh">
-          <CircularProgress />
+          <CircularProgress color="secondary" />
         </Flex>
       }
     >

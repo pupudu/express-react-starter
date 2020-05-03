@@ -66,7 +66,7 @@ export function Header(props) {
           <Grid component="label" container alignItems="center" spacing={1}>
             <Grid item>Dark</Grid>
             <Grid item>
-              <Switch checked={props.darkMode} onChange={props.toggleDarkMode} color="secondary" />
+              <Switch checked={!props.darkMode} onChange={props.toggleDarkMode} color="secondary" />
             </Grid>
             <Grid item>Light</Grid>
           </Grid>
