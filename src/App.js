@@ -18,12 +18,7 @@ const Grids = () => {
   );
 };
 
-const DataView = () => {
-  const data = useFetch({ url: '/example/all' });
-  return <div>{data}</div>;
-};
-
-function App() {
+const Components = () => {
   return (
     <div>
       <Button variant="contained" color="primary">
@@ -32,9 +27,22 @@ function App() {
       <Button variant="contained" color="secondary">
         <Link to="/data">Data Loading</Link>
       </Button>
+    </div>
+  );
+};
+
+const DataView = () => {
+  const data = useFetch({ url: '/example/all' });
+  return <div>{data}</div>;
+};
+
+function App() {
+  return (
+    <div>
       <Box mt="1rem">
         <Routes>
-          <Route path="/" element={<Grids />} />
+          <Route path="/" element={<Components />} />
+          <Route path="/grids" element={<Grids />} />
           <Route path="/data" element={<DataView />} />
         </Routes>
       </Box>

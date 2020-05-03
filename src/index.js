@@ -13,13 +13,13 @@ ReactDOM.render(
     <MaterialThemeProvider>
       <ThemeProvider theme={theme}>
         <CSSReset />
-        <FetchBoundary>
-          <BrowserRouter>
-            <Layout>
+        <BrowserRouter>
+          <Layout>
+            <FetchBoundary>
               <App />
-            </Layout>
-          </BrowserRouter>
-        </FetchBoundary>
+            </FetchBoundary>
+          </Layout>
+        </BrowserRouter>
       </ThemeProvider>
     </MaterialThemeProvider>
   </React.StrictMode>,

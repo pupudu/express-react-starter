@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
-import { Flex, Spinner } from '@chakra-ui/core';
+import { Flex } from '@chakra-ui/core';
+import { CircularProgress } from '@material-ui/core';
 import { ErrorBoundary } from './ErrorBoundary';
 
 export const FetchBoundary: React.FC = ({ children, ...props }) => {
@@ -8,7 +9,7 @@ export const FetchBoundary: React.FC = ({ children, ...props }) => {
       {...props}
       fallback={
         <Flex alignItems="center" justifyContent="center" height="50vh">
-          <Spinner />
+          <CircularProgress />
         </Flex>
       }
     >
