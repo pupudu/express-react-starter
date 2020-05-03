@@ -37,7 +37,7 @@ export function Header(props) {
     <AppBar
       position="fixed"
       className={clsx(classes.appBar, {
-        [classes.appBarShift]: props.open,
+        [classes.appBarShift]: false,
       })}
     >
       <Toolbar>

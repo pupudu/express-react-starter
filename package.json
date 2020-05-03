@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "ts": "ts-node -r tsconfig-paths/register --project server/tsconfig.json",
-    "start:app": "react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "start:server": "yarn ts server/index.ts"
   },
