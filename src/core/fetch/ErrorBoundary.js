@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from '@material-ui/core';
+import { Container, Button } from '@material-ui/core';
 import { Flex } from '@chakra-ui/core';
 
 export class ErrorBoundary extends React.Component {
@@ -25,6 +25,16 @@ export class ErrorBoundary extends React.Component {
               {JSON.stringify(err, null, 2)}
             </div>
           </Flex>
+          {process.env.NODE_ENV === 'development' && (
+            <Button
+              onClick={() => {
+                window.location.pathname = '/';
+                this.setState({ error: null });
+              }}
+            >
+              Clear Error
+            </Button>
+          )}
         </Container>
       );
     }

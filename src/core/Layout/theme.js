@@ -11,7 +11,7 @@ export default function MaterialThemeProvider(props) {
             main: '#5f4f90',
           },
           secondary: {
-            main: '#56b187',
+            main: '#52a17d',
           },
         },
       }),
