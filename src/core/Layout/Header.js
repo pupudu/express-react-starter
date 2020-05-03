@@ -1,6 +1,14 @@
 import React from 'react';
 import clsx from 'clsx';
-import { AppBar, Toolbar, IconButton, Typography, makeStyles } from '@material-ui/core';
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  makeStyles,
+  Grid,
+  Switch,
+} from '@material-ui/core';
 import { Menu } from '@material-ui/icons';
 import { drawerWidth } from './Sidebar';
 
@@ -51,8 +59,17 @@ export function Header(props) {
         >
           <Menu />
         </IconButton>
-        <Typography variant="h6" noWrap>
+        <Typography variant="h6" noWrap className={classes.title}>
           Translator Admin
+        </Typography>
+        <Typography component="div">
+          <Grid component="label" container alignItems="center" spacing={1}>
+            <Grid item>Dark</Grid>
+            <Grid item>
+              <Switch checked={props.darkMode} onChange={props.toggleDarkMode} color="secondary" />
+            </Grid>
+            <Grid item>Light</Grid>
+          </Grid>
         </Typography>
       </Toolbar>
     </AppBar>

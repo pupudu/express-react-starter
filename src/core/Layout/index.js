@@ -40,7 +40,12 @@ export const Layout = (props) => {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <Header handleDrawerToggle={handleDrawerToggle} open={open} />
+      <Header
+        handleDrawerToggle={handleDrawerToggle}
+        open={open}
+        darkMode={props.darkMode}
+        toggleDarkMode={props.toggleDarkMode}
+      />
       <Sidebar open={open} />
       <main
         className={clsx(classes.content, {
