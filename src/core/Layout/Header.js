@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    zIndex: theme.zIndex.drawer + 1,
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -44,9 +45,9 @@ export function Header(props) {
         <IconButton
           color="inherit"
           aria-label="open drawer"
-          onClick={props.handleDrawerOpen}
+          onClick={props.handleDrawerToggle}
           edge="start"
-          className={clsx(classes.menuButton, props.open && classes.hide)}
+          className={clsx(classes.menuButton)}
         >
           <Menu />
         </IconButton>

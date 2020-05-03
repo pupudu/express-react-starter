@@ -46,7 +46,7 @@ export function Sidebar(props) {
       }}
     >
       <div className={classes.drawerHeader}>
-        <IconButton onClick={props.handleDrawerClose}>
+        <IconButton>
           {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
         </IconButton>
       </div>

@@ -33,19 +33,15 @@ export const Layout = (props) => {
   const sidebarClasses = useSidebarStyles();
   const [open, setOpen] = React.useState(true);
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
+  const handleDrawerToggle = () => {
+    setOpen(!open);
   };
 
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <Header handleDrawerOpen={handleDrawerOpen} open={open} />
-      <Sidebar handleDrawerClose={handleDrawerClose} open={open} />
+      <Header handleDrawerToggle={handleDrawerToggle} open={open} />
+      <Sidebar open={open} />
       <main
         className={clsx(classes.content, {
           [classes.contentShift]: open,
