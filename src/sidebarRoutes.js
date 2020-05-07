@@ -8,6 +8,6 @@ export default [
   ],
   [
     { to: '/grids', text: 'Grids', Icon: <AllOut /> },
-    { to: '/forms', text: 'Forms', Icon: <ApartmentRounded /> },
+    { to: '/register', text: 'Sign Up', Icon: <ApartmentRounded /> },
   ],
 ];
