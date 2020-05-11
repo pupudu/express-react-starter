@@ -14,7 +14,6 @@ import FormControl from '@material-ui/core/FormControl';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 
-
 const Grids = () => {
   return (
     <div>
@@ -44,6 +43,84 @@ const useStyles = makeStyles((theme) => ({
     width: '100ch',
   },
 }));
+
+const Login = () => {
+  const classes = useStyles();
+  const [values, setValues] = React.useState({
+    amount: '',
+    password: '',
+    weight: '',
+    weightRange: '',
+    showPassword: false,
+  });
+
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
+
+  const handleClickShowPassword = () => {
+    setValues({ ...values, showPassword: !values.showPassword });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+  return (
+    <Card>
+      <CardContent>
+        <Stack spacing={3} textAlign="center" mb="30px" mt="30px" as="h1">
+          <Heading isTruncated fontSize="100px" fontFamily="Perpetua">
+            Log In
+          </Heading>
+          <Heading isTruncated fontSize="20px" fontFamily="Perpetua">
+            Already have a DocMora account? Log In
+          </Heading>
+        </Stack>
+        <Form
+          initialValues={{
+            email: '',
+            password: '',
+          }}
+          onSubmit={(data) => {
+            console.log('Login Successful');
+            alert(JSON.stringify(data, null, 2));
+          }}
+        >
+          <Grid templateColumns="repeat(1, 1fr)" gap={6} mb="1rem">
+            <FormInput name="email" label="Email" type="email" />
+            <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+              <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+              <OutlinedInput
+                id="outlined-adornment-password"
+                type={values.showPassword ? 'text' : 'password'}
+                value={values.password}
+                onChange={handleChange('password')}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                    >
+                      {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+                labelWidth={70}
+              />
+            </FormControl>
+          </Grid>
+          <Grid justifyContent="center">
+            <Button size="large" color="secondary" variant="contained" type="submit">
+              Log In
+            </Button>
+          </Grid>
+        </Form>
+      </CardContent>
+    </Card>
+  );
+};
 
 const Forms = () => {
   const classes = useStyles();
@@ -163,6 +240,7 @@ function App() {
           <Route path="/grids" element={<Grids />} />
           <Route path="/data" element={<DataView />} />
           <Route path="/register" element={<Forms />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Box>
     </div>

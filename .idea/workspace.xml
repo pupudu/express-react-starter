@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91d961a9-295f-4d3d-bd13-d68efe721dc7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/Layout/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Layout/Sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/forms/formikfy.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/forms/index.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sidebarRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/sidebarRoutes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,6 +26,9 @@
   </component>
   <component name="GithubDefaultAccount">
     <option name="defaultAccountId" value="cdc5b26c-c2f7-4009-aa74-157b5a7a8ab0" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="ProjectId" id="1bPdIkG2bAdmpBTkB0MY7OY2nyp" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -69,6 +70,10 @@
       <workItem from="1588830153486" duration="3023000" />
       <workItem from="1588834611171" duration="420000" />
       <workItem from="1588835076646" duration="6585000" />
+      <workItem from="1589195521832" duration="2034000" />
+      <workItem from="1589198294595" duration="811000" />
+      <workItem from="1589199582145" duration="495000" />
+      <workItem from="1589200090012" duration="1721000" />
     </task>
     <servers />
   </component>
