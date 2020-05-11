@@ -1,10 +1,11 @@
 import React from 'react';
-import { AccessAlarm, AddAPhoto, AllOut } from '@material-ui/icons';
+import { AddAPhoto, AllOut } from '@material-ui/icons';
 import LockIcon from '@material-ui/icons/Lock';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
+import HomeIcon from '@material-ui/icons/Home';
 export default [
   [
-    { to: '/', text: 'Components', Icon: <AccessAlarm /> },
+    { to: '/', text: 'Home', Icon: <HomeIcon /> },
     { to: '/data', text: 'Data View', Icon: <AddAPhoto /> },
   ],
   [

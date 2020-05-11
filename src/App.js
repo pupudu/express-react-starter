@@ -213,7 +213,7 @@ const SignUp = () => {
   );
 };
 
-const Components = () => {
+const Home = () => {
   return (
     <div>
       <Button variant="contained" color="primary">
@@ -236,7 +236,7 @@ function App() {
     <div>
       <Box mt="1rem">
         <Routes>
-          <Route path="/" element={<Components />} />
+          <Route path="/" element={<Home />} />
           <Route path="/grids" element={<Grids />} />
           <Route path="/data" element={<DataView />} />
           <Route path="/signup" element={<SignUp />} />
