@@ -1,5 +1,5 @@
 import React from 'react';
-import { AccessAlarm, AddAPhoto, AllOut, } from '@material-ui/icons';
+import { AccessAlarm, AddAPhoto, AllOut } from '@material-ui/icons';
 import LockIcon from '@material-ui/icons/Lock';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 export default [
@@ -9,7 +9,7 @@ export default [
   ],
   [
     { to: '/grids', text: 'Grids', Icon: <AllOut /> },
-    { to: '/register', text: 'Sign Up', Icon: <LockIcon /> },
+    { to: '/signup', text: 'Sign Up', Icon: <LockIcon /> },
     { to: '/login', text: 'Log In', Icon: <LockOpenIcon /> },
   ],
 ];

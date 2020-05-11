@@ -3,7 +3,7 @@ import { Button, Card, CardContent, MenuItem } from '@material-ui/core';
 import { Grid, Box, Heading, Stack } from '@chakra-ui/core';
 import { useFetch } from 'core/fetch';
 import { Routes, Route, Link } from 'react-router-dom';
-import { Form, FormDate, FormInput, FormSelect } from 'core/register';
+import { Form, FormDate, FormInput, FormSelect } from 'core/signup';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import clsx from 'clsx';
@@ -122,7 +122,7 @@ const Login = () => {
   );
 };
 
-const Forms = () => {
+const SignUp = () => {
   const classes = useStyles();
   const [values, setValues] = React.useState({
     amount: '',
@@ -239,7 +239,7 @@ function App() {
           <Route path="/" element={<Components />} />
           <Route path="/grids" element={<Grids />} />
           <Route path="/data" element={<DataView />} />
-          <Route path="/register" element={<Forms />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
         </Routes>
       </Box>

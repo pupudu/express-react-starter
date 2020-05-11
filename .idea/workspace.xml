@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91d961a9-295f-4d3d-bd13-d68efe721dc7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/register/formikfy.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/register/index.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sidebarRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/sidebarRoutes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +74,7 @@
       <workItem from="1589195521832" duration="2034000" />
       <workItem from="1589198294595" duration="811000" />
       <workItem from="1589199582145" duration="495000" />
-      <workItem from="1589200090012" duration="1721000" />
+      <workItem from="1589200090012" duration="2137000" />
     </task>
     <servers />
   </component>
