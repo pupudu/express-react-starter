@@ -11,10 +11,14 @@ import {
 } from '@material-ui/core';
 import { Menu } from '@material-ui/icons';
 import { drawerWidth } from './Sidebar';
+import logo from './logo.png';
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
+  },
+  logo: {
+    maxWidth: 200,
   },
   hide: {
     display: 'none',
@@ -59,9 +63,8 @@ export function Header(props) {
         >
           <Menu />
         </IconButton>
-        <Typography variant="h6" noWrap className={classes.title}>
-          Translator Admin
-        </Typography>
+        <img src={logo} alt="logo" className={classes.logo} />
+        <Typography className={classes.title}></Typography>
         <Typography component="div">
           <Grid component="label" container alignItems="center" spacing={1}>
             <Grid item>Dark</Grid>
