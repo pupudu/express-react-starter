@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Card, CardContent, MenuItem } from '@material-ui/core';
 import { Grid, Box, Heading, Stack } from '@chakra-ui/core';
 import { useFetch } from 'core/fetch';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Form, FormDate, FormInput, FormSelect } from 'core/signup';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
@@ -13,6 +13,8 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import back from './back.webp';
 
 const Grids = () => {
   return (
@@ -33,6 +35,19 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexWrap: 'wrap',
   },
+  back: {
+    width: 705,
+    height: 378,
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: 30,
+    marginBottom: 30,
+    border: '1px solid #673ab7',
+    borderRadius: '10px',
+    padding: '10px',
+  },
+  container: {},
   margin: {
     margin: theme.spacing(1),
   },
@@ -41,6 +56,16 @@ const useStyles = makeStyles((theme) => ({
   },
   textField: {
     width: '100ch',
+  },
+  heading: {
+    textAlign: 'center',
+    textShadow: '4px 4px #bdbdbd',
+  },
+  para: {
+    textAlign: 'center',
+    fontSize: 30,
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
   },
 }));
 
@@ -214,14 +239,17 @@ const SignUp = () => {
 };
 
 const Home = () => {
+  const classes = useStyles();
   return (
     <div>
-      <Button variant="contained" color="primary">
-        <Link to="/">Components</Link>
-      </Button>{' '}
-      <Button variant="contained" color="secondary">
-        <Link to="/data">Data Loading</Link>
-      </Button>
+      <Heading isTruncated fontSize="50px" fontFamily="Perpetua" className={classes.heading}>
+        Welcome to DocMora Translator
+      </Heading>
+      <img src={back} className={classes.back} />
+      <Typography gutterBottom className={classes.para}>
+        Translate Your Document to Tamil, English and Sinhala while preserving the layout of your
+        Document.
+      </Typography>
     </div>
   );
 };
