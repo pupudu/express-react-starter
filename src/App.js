@@ -14,7 +14,20 @@ import FormControl from '@material-ui/core/FormControl';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import back from './back.webp';
+import cover from './backk.jpg';
+import card from './card.jpg';
+import AcUnitSharpIcon from '@material-ui/icons/AcUnitSharp';
+import InputIcon from '@material-ui/icons/Input';
+import CardActions from '@material-ui/core/CardActions';
+import Avatar from '@material-ui/core/Avatar';
+import AvatarGroup from '@material-ui/lab/AvatarGroup';
+import avatar1 from './avatar1.png';
+import avatar2 from './avatar2.png';
+import avatar3 from './avatar3.png';
+import avatar4 from './avatar4.webp';
+import CallIcon from '@material-ui/icons/Call';
+import back from './back.jpg';
+import CardMedia from '@material-ui/core/CardMedia';
 
 const Grids = () => {
   return (
@@ -35,17 +48,57 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexWrap: 'wrap',
   },
+  background: {
+    display: 'inline-block',
+    overflow: 'hidden',
+    position: 'relative',
+    width: '100%',
+  },
   back: {
-    width: 705,
-    height: 378,
-    display: 'block',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    marginTop: 30,
-    marginBottom: 30,
-    border: '1px solid #673ab7',
-    borderRadius: '10px',
-    padding: '10px',
+    pointerEvents: 'none',
+    position: 'absolute',
+    width: ' 100%',
+    height: '100%',
+    zIndex: '-1',
+  },
+  card: {
+    pointerEvents: 'none',
+    position: 'absolute',
+    marginLeft: '12%',
+    marginTop: 50,
+    height: 250,
+    width: ' 65%',
+    zIndex: '-1',
+  },
+  avatar: {
+    marginLeft: '20%',
+  },
+  cardcontent: {
+    marginLeft: '30%',
+    marginTop: 75,
+    height: 200,
+    width: ' 75%',
+    zIndex: '-1',
+  },
+  cardtypo1: {
+    fontSize: '20px',
+    fontWeight: 'bold',
+    color: 'white',
+    display: 'inline-block',
+  },
+  cardtypo2: {
+    fontSize: '20px',
+    color: 'white',
+    display: 'inline-block',
+  },
+  large: {
+    width: theme.spacing(7),
+    height: theme.spacing(7),
+  },
+  button: {
+    margin: theme.spacing(1),
+    marginRight: '100px',
+    marginLeft: '10%',
   },
   container: {},
   margin: {
@@ -58,14 +111,30 @@ const useStyles = makeStyles((theme) => ({
     width: '100ch',
   },
   heading: {
+    marginTop: 200,
+    marginBottom: 50,
+    color: 'white',
     textAlign: 'center',
-    textShadow: '4px 4px #bdbdbd',
+    textShadow: '4px 4px 3px black',
+    fontFamily: 'Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif',
   },
   para: {
     textAlign: 'center',
-    fontSize: 30,
-    fontWeight: 'bold',
+    fontSize: 25,
     textTransform: 'uppercase',
+    marginBottom: 200,
+    color: 'white',
+    textShadow: '2px 2px 3px black',
+  },
+  details: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  content: {
+    flex: '1 0 auto',
+  },
+  cover: {
+    width: 151,
   },
 }));
 
@@ -242,14 +311,72 @@ const Home = () => {
   const classes = useStyles();
   return (
     <div>
-      <Heading isTruncated fontSize="50px" fontFamily="Perpetua" className={classes.heading}>
-        Welcome to DocMora Translator
-      </Heading>
-      <img src={back} className={classes.back} />
-      <Typography gutterBottom className={classes.para}>
-        Translate Your Document to Tamil, English and Sinhala while preserving the layout of your
-        Document.
-      </Typography>
+      <div className={classes.background}>
+        <img src={cover} alt="cover" className={classes.back} />
+        <Heading isTruncated fontSize="80px" className={classes.heading}>
+          Welcome to DocMora Translator
+        </Heading>
+        <Typography gutterBottom className={classes.para}>
+          <AcUnitSharpIcon />
+          &nbsp; 100% customer satisfaction
+          <br />
+          <AcUnitSharpIcon />
+          &nbsp; Document Format Preservation
+        </Typography>
+      </div>
+      <card>
+        <img src={card} alt="card" className={classes.card} />
+        <div className={classes.cardcontent}>
+          <div className={classes.avatar}>
+            <AvatarGroup max={4}>
+              <Avatar alt="Remy Sharp" src={avatar1} className={classes.large} />
+              <Avatar alt="Travis Howard" src={avatar2} className={classes.large} />
+              <Avatar alt="Cindy Baker" src={avatar3} className={classes.large} />
+              <Avatar alt="Agnes Walker" src={avatar4} className={classes.large} />
+            </AvatarGroup>
+          </div>
+          <CardContent>
+            <Typography className={classes.cardtypo1}>Upload Your file :&nbsp;</Typography>
+            <Typography className={classes.cardtypo2}>
+              our translators start most orders within&nbsp;
+            </Typography>
+            <Typography className={classes.cardtypo1}>01 hour!</Typography>
+          </CardContent>
+          <CardActions>
+            <Button
+              variant="contained"
+              color="secondary"
+              className={classes.button}
+              startIcon={<InputIcon />}
+              size="large"
+            >
+              ORDER NOW
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.button}
+              startIcon={<CallIcon />}
+              size="large"
+            >
+              CONTACT SALES
+            </Button>
+          </CardActions>
+        </div>
+      </card>
+      <Card className={classes.root}>
+        <div className={classes.details}>
+          <CardContent className={classes.content}>
+            <Typography component="h5" variant="h5">
+              Live From Space
+            </Typography>
+            <Typography variant="subtitle1" color="textSecondary">
+              Mac Miller
+            </Typography>
+          </CardContent>
+        </div>
+        <CardMedia className={classes.cover} image={back} title="Live from space album cover" />
+      </Card>
     </div>
   );
 };
