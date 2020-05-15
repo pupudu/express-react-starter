@@ -134,7 +134,16 @@ const useStyles = makeStyles((theme) => ({
     flex: '1 0 auto',
   },
   cover: {
-    width: 151,
+    width: '50%',
+  },
+  card2: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    marginTop: '100px',
+    height: '200px',
+  },
+  card2head: {
+    marginBottom: '30px',
   },
 }));
 
@@ -364,14 +373,18 @@ const Home = () => {
           </CardActions>
         </div>
       </card>
-      <Card className={classes.root}>
+      <Card className={classes.card2}>
         <div className={classes.details}>
           <CardContent className={classes.content}>
-            <Typography component="h5" variant="h5">
-              Live From Space
+            <Typography component="h5" variant="h5" className={classes.card2head}>
+              High-quality translation solutions
+              <br />
             </Typography>
-            <Typography variant="subtitle1" color="textSecondary">
-              Mac Miller
+            <Typography variant="h6" color="textSecondary">
+              Our intuitive platform allows companies of any size to order
+            </Typography>
+            <Typography variant="h6" color="textSecondary">
+              cost-efficient translations from professional translators.
             </Typography>
           </CardContent>
         </div>
