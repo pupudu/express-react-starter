@@ -140,24 +140,25 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '30px',
   },
   priceheading: {
-    marginTop: 200,
+    marginTop: 50,
     marginBottom: 50,
-    color: 'black',
     textAlign: 'center',
-    textShadow: '4px 4px 3px white',
     fontFamily: 'Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif',
   },
   table: {
-    minWidth: 700,
+    minWidth: 500,
+  },
+  tablehead: {
+    fontSize: '30px',
   },
 }));
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: '#5f4f90',
     color: theme.palette.common.white,
   },
   body: {
-    fontSize: 14,
+    fontSize: 30,
   },
 }))(TableCell);
 
@@ -174,7 +175,7 @@ function createData(level, standard, advanced, additional) {
 }
 
 const rows = [
-  createData('Price per word*', 'From\n' + '$0.06', 'From\n' + '$0.', 'Contact sales'),
+  createData('Price per word*', 'From $0.06', 'From $0.', 'Contact sales'),
   createData(
     'Quality',
     'Translator who passed our Standard level test. Best for casual content.',
@@ -183,9 +184,9 @@ const rows = [
   ),
   createData(
     'Recommended use',
-    'Internal communication\n' + 'Social media posts\n' + 'User reviews\n' + 'Emails and letters',
-    'Presentations\n' + 'Reports\n' + 'Mobile apps\n' + 'Website localization',
-    'Documents translated using Gengo business level.',
+    'Internal communication Social media posts User reviews Emails and letters',
+    'Presentations Reports Mobile apps Website localization',
+    'Documents translated using DocMora business level.',
   ),
 ];
 const Pricing = () => {
@@ -199,22 +200,29 @@ const Pricing = () => {
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>Level</StyledTableCell>
-              <StyledTableCell align="right">Standard</StyledTableCell>
-              <StyledTableCell align="right">Advanced</StyledTableCell>
-              <StyledTableCell align="right">Additional Services</StyledTableCell>
+              <StyledTableCell align="center" className={classes.tablehead}>
+                Level
+              </StyledTableCell>
+              <StyledTableCell align="center" className={classes.tablehead}>
+                Standard
+              </StyledTableCell>
+              <StyledTableCell align="center" className={classes.tablehead}>
+                Advanced
+              </StyledTableCell>
+              <StyledTableCell align="center" className={classes.tablehead}>
+                Additional Services
+              </StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {rows.map((row) => (
-              <StyledTableRow key={row.name}>
+              <StyledTableRow key={row.level}>
                 <StyledTableCell component="th" scope="row">
-                  {row.name}
+                  {row.level}
                 </StyledTableCell>
-                <StyledTableCell align="right">{row.calories}</StyledTableCell>
-                <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                <StyledTableCell align="right">{row.protein}</StyledTableCell>
+                <StyledTableCell align="center">{row.standard}</StyledTableCell>
+                <StyledTableCell align="center">{row.advanced}</StyledTableCell>
+                <StyledTableCell align="center">{row.additional}</StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>

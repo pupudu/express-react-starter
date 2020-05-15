@@ -22,7 +22,6 @@
     <list default="true" id="91d961a9-295f-4d3d-bd13-d68efe721dc7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sidebarRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/sidebarRoutes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +109,7 @@
       <workItem from="1589441657894" duration="3950000" />
       <workItem from="1589484838855" duration="1020000" />
       <workItem from="1589509526906" duration="16107000" />
+      <workItem from="1589562360698" duration="3044000" />
     </task>
     <servers />
   </component>
@@ -126,16 +126,18 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="551" y="256" key="#ESLint" timestamp="1589515718528">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="551" y="256" key="#ESLint/0.0.1366.728@0.0.1366.728" timestamp="1589515718528" />
-    <state x="227" y="230" key="#Notifications" timestamp="1589515401628">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="227" y="261" width="781" height="470" key="#Notifications" timestamp="1589562851818">
+      <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="227" y="230" key="#Notifications/0.0.1366.728@0.0.1366.728" timestamp="1589515401628" />
+    <state x="227" y="261" width="781" height="470" key="#Notifications/0.27.1366.741@0.27.1366.741" timestamp="1589562851818" />
     <state x="163" y="355" width="624" height="403" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589432135092">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
