@@ -28,20 +28,14 @@ import avatar4 from './avatar4.webp';
 import CallIcon from '@material-ui/icons/Call';
 import back from './back.jpg';
 import CardMedia from '@material-ui/core/CardMedia';
-
-const Grids = () => {
-  return (
-    <div>
-      <Grid templateColumns="repeat(5, 1fr)" gap={6}>
-        <Box w="100%" h="10" bg="blue.500" />
-        <Box w="100%" h="10" bg="blue.500" />
-        <Box w="100%" h="10" bg="blue.500" />
-        <Box w="100%" h="10" bg="blue.500" />
-        <Box w="100%" h="10" bg="blue.500" />
-      </Grid>
-    </div>
-  );
-};
+import { withStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -145,7 +139,90 @@ const useStyles = makeStyles((theme) => ({
   card2head: {
     marginBottom: '30px',
   },
+  priceheading: {
+    marginTop: 200,
+    marginBottom: 50,
+    color: 'black',
+    textAlign: 'center',
+    textShadow: '4px 4px 3px white',
+    fontFamily: 'Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif',
+  },
+  table: {
+    minWidth: 700,
+  },
 }));
+const StyledTableCell = withStyles((theme) => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+const StyledTableRow = withStyles((theme) => ({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
+}))(TableRow);
+
+function createData(level, standard, advanced, additional) {
+  return { level, standard, advanced, additional };
+}
+
+const rows = [
+  createData('Price per word*', 'From\n' + '$0.06', 'From\n' + '$0.', 'Contact sales'),
+  createData(
+    'Quality',
+    'Translator who passed our Standard level test. Best for casual content.',
+    'Translator who passed our more rigorous, Advanced level test. Best for content requiring more accuracy.',
+    'Proofreading by business level translator. Only available for customers with sales support.',
+  ),
+  createData(
+    'Recommended use',
+    'Internal communication\n' + 'Social media posts\n' + 'User reviews\n' + 'Emails and letters',
+    'Presentations\n' + 'Reports\n' + 'Mobile apps\n' + 'Website localization',
+    'Documents translated using Gengo business level.',
+  ),
+];
+const Pricing = () => {
+  const classes = useStyles();
+  return (
+    <div>
+      <Heading isTruncated fontSize="80px" className={classes.priceheading}>
+        Pricing and Languages
+      </Heading>
+      <TableContainer component={Paper}>
+        <Table className={classes.table} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell>Level</StyledTableCell>
+              <StyledTableCell align="right">Standard</StyledTableCell>
+              <StyledTableCell align="right">Advanced</StyledTableCell>
+              <StyledTableCell align="right">Additional Services</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <StyledTableRow key={row.name}>
+                <StyledTableCell component="th" scope="row">
+                  {row.name}
+                </StyledTableCell>
+                <StyledTableCell align="right">{row.calories}</StyledTableCell>
+                <StyledTableCell align="right">{row.fat}</StyledTableCell>
+                <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+                <StyledTableCell align="right">{row.protein}</StyledTableCell>
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
+  );
+};
 
 const Login = () => {
   const classes = useStyles();
@@ -405,7 +482,7 @@ function App() {
       <Box mt="1rem">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/grids" element={<Grids />} />
+          <Route path="/pricing" element={<Pricing />} />
           <Route path="/data" element={<DataView />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
@@ -414,5 +491,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

@@ -9,7 +9,7 @@ export default [
     { to: '/data', text: 'Data View', Icon: <AddAPhoto /> },
   ],
   [
-    { to: '/grids', text: 'Grids', Icon: <AllOut /> },
+    { to: '/pricing', text: 'Pricing', Icon: <AllOut /> },
     { to: '/signup', text: 'Sign Up', Icon: <LockIcon /> },
     { to: '/login', text: 'Log In', Icon: <LockOpenIcon /> },
   ],
