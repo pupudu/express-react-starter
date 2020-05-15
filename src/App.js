@@ -189,7 +189,7 @@ const Login = () => {
             alert(JSON.stringify(data, null, 2));
           }}
         >
-          <Grid templateColumns="repeat(1, 1fr)" gap={6} mb="1rem">
+          <Grid templateColumns="repeat(1, 1fr)" gap={6} mb="1rem" mb="1rem" ml="25%" mr="25%">
             <FormInput name="email" label="Email" type="email" />
             <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
               <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
@@ -270,7 +270,7 @@ const SignUp = () => {
             alert(JSON.stringify(data, null, 2));
           }}
         >
-          <Grid templateColumns="repeat(1, 1fr)" gap={6} mb="1rem">
+          <Grid templateColumns="repeat(1, 1fr)" gap={6} mb="1rem" ml="25%" mr="25%">
             <FormInput name="name" label="Name" />
             <FormDate name="date" label="Birthday" />
             <FormSelect name="gender" label="Gender">
