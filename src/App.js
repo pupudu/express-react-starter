@@ -480,8 +480,36 @@ const Home = () => {
 };
 
 const DataView = () => {
-  const data = useFetch({ url: '/example/all' });
-  return <div>{data}</div>;
+  const data = useFetch({ url: '/previousDoc/showFiles' });
+  const classes = useStyles();
+  return (
+    <div>
+      <TableContainer component={Paper}>
+        <Table className={classes.table} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell align="center" className={classes.tablehead}>
+                ID
+              </StyledTableCell>
+              <StyledTableCell align="center" className={classes.tablehead}>
+                File Name
+              </StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data.map((row) => (
+              <StyledTableRow key={row.id}>
+                <StyledTableCell component="th" scope="row">
+                  {row.id}
+                </StyledTableCell>
+                <StyledTableCell align="center">{row.filename}</StyledTableCell>
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
+  );
 };
 
 function App() {

@@ -9,7 +9,7 @@ export class DatabaseConnection extends BaseModule {
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'admin',
+      password: '',
       database: 'translator',
       entities: [`${__dirname}/../**/*.entity.ts`],
       logging: false,
