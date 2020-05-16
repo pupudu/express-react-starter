@@ -4,4 +4,8 @@ export class PreviousDocDao extends BaseDao {
   async getFiles() {
     return await this.query(`SELECT * FROM file`);
   }
+
+  async saveFile() {
+    await this.query(`INSERT INTO file(id, filename) values(3, 'new file')`);
+  }
 }
