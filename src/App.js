@@ -138,6 +138,12 @@ const useStyles = makeStyles((theme) => ({
   },
   card2head: {
     marginBottom: '30px',
+    marginTop: '20px',
+    marginLeft: '20%',
+    fontWeight: 'bold',
+  },
+  card2body: {
+    fontWeight: 'bold',
   },
   priceheading: {
     marginTop: 50,
@@ -150,6 +156,9 @@ const useStyles = makeStyles((theme) => ({
   },
   tablehead: {
     fontSize: '30px',
+  },
+  tablespecial: {
+    fontSize: 'medium',
   },
 }));
 const StyledTableCell = withStyles((theme) => ({
@@ -465,10 +474,10 @@ const Home = () => {
               High-quality translation solutions
               <br />
             </Typography>
-            <Typography variant="h6" color="textSecondary">
+            <Typography variant="h6" className={classes.card2body}>
               Our intuitive platform allows companies of any size to order
             </Typography>
-            <Typography variant="h6" color="textSecondary">
+            <Typography variant="h6" className={classes.card2body}>
               cost-efficient translations from professional translators.
             </Typography>
           </CardContent>
