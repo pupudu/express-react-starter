@@ -1,10 +1,12 @@
-import { BaseModule } from '@core/base.module';
+import { BaseModule, inject } from '@core/base.module';
 import { sleepAsync } from '@core/utils';
+import { PreviousDocDao } from './previousDoc.dao';
 
 export class PreviousDocService extends BaseModule {
-  fileNames = ['file1', 'file2'];
+  dao = inject(PreviousDocDao);
+
   async getPreviousDocData() {
     await sleepAsync(1000);
-    return this.fileNames;
+    return await this.dao.getFiles();
   }
 }

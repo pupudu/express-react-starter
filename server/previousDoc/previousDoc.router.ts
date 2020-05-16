@@ -1,12 +1,9 @@
 import { BaseRouter } from '@core/base.router';
 import { PreviousDocService } from './previousDoc.service';
+import { inject } from '@core/base.module';
 
 export class PreviousDocRouter extends BaseRouter {
-  service: PreviousDocService;
-
-  async didInit() {
-    this.service = await PreviousDocService.init();
-  }
+  service = inject(PreviousDocService);
 
   registerRoutes() {
     this.router.get('/showFiles', this.getPreviousDocData.bind(this));

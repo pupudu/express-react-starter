@@ -2,10 +2,13 @@ import express from 'express';
 import path from 'path';
 import { RootRouter } from './router';
 import { internalErrorHandler, notFoundHandler } from '@core/error-handlers';
+import { DatabaseConnection } from '@core/database.connection';
 
 const app = express();
 
 (async () => {
+  await DatabaseConnection.init();
+
   // register core middleware
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
