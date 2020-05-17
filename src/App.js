@@ -503,6 +503,30 @@ const DataView = () => {
               <StyledTableCell align="center" className={classes.tablehead}>
                 File Name
               </StyledTableCell>
+              <StyledTableCell align="center" className={classes.tablehead}>
+                Source File Type
+              </StyledTableCell>
+              <StyledTableCell align="center" className={classes.tablehead}>
+                Order Date
+              </StyledTableCell>
+              <StyledTableCell align="center" className={classes.tablehead}>
+                Source Doc. Language
+              </StyledTableCell>
+              <StyledTableCell align="center" className={classes.tablehead}>
+                Target Doc. Language/s
+              </StyledTableCell>
+              <StyledTableCell align="center" className={classes.tablehead}>
+                Translated Date
+              </StyledTableCell>
+              <StyledTableCell align="center" className={classes.tablehead}>
+                Revision Status
+              </StyledTableCell>
+              <StyledTableCell align="center" className={classes.tablehead}>
+                Payment Status
+              </StyledTableCell>
+              <StyledTableCell align="center" className={classes.tablehead}>
+                Approved Status
+              </StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -512,6 +536,14 @@ const DataView = () => {
                   {row.id}
                 </StyledTableCell>
                 <StyledTableCell align="center">{row.filename}</StyledTableCell>
+                <StyledTableCell align="center">{row.sourcefiletype}</StyledTableCell>
+                <StyledTableCell align="center">{row.orderdate}</StyledTableCell>
+                <StyledTableCell align="center">{row.sourcedoclang}</StyledTableCell>
+                <StyledTableCell align="center">{row.targetdoclang}</StyledTableCell>
+                <StyledTableCell align="center">{row.translateddate}</StyledTableCell>
+                <StyledTableCell align="center">{row.revisionstatus}</StyledTableCell>
+                <StyledTableCell align="center">{row.paymentstatus}</StyledTableCell>
+                <StyledTableCell align="center">{row.approvestatus}</StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>
