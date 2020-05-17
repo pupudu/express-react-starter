@@ -10,8 +10,8 @@ export class UserRouter extends BaseRouter {
   }
 
   async signupUser(req, res) {
-    const { email, password } = req.body;
-    // await this.service.saveUser({ email, password });
+    const { name, birthday, gender, email, password } = req.body;
+    await this.service.saveUser({ name, birthday, gender, email, password });
     res.json({ msg: 'Signup Success!', status: 'success' });
   }
 }

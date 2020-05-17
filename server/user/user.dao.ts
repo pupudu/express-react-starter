@@ -1,13 +1,13 @@
 import { BaseDao } from '@core/base.dao';
 
 export class UserDao extends BaseDao {
-  async saveUser({ email, password }) {
+  async saveUser({ name, birthday, gender, email, password }) {
     return await this.query(
       `
-        INSERT INTO table_name (email, password)
-        VALUES (?, ?)
+        INSERT INTO userdetails (name,birthday,gender,email, password)
+        VALUES (?, ?, ?, ?, ?)
     `,
-      [email, password],
+      [name, birthday, gender, email, password],
     );
   }
 }

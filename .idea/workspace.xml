@@ -20,7 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="91d961a9-295f-4d3d-bd13-d68efe721dc7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/user/user.dao.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/user/user.dao.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/user/user.router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/user/user.router.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,7 +65,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../translator" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -110,7 +113,8 @@
       <workItem from="1589484838855" duration="1020000" />
       <workItem from="1589509526906" duration="16107000" />
       <workItem from="1589562360698" duration="3044000" />
-      <workItem from="1589615718323" duration="12186000" />
+      <workItem from="1589615718323" duration="23009000" />
+      <workItem from="1589698544505" duration="34000" />
     </task>
     <servers />
   </component>
@@ -143,13 +147,18 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="163" y="355" width="624" height="403" key="#com.intellij.fileTypes.FileTypeChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1589432135092" />
-    <state x="743" y="311" width="424" height="491" key="FileChooserDialogImpl" timestamp="1588537618836">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state x="529" y="196" width="313" height="340" key="FileChooserDialogImpl" timestamp="1589698576815">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="529" y="196" width="313" height="340" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1589698576815" />
     <state x="743" y="311" width="424" height="491" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1588537618836" />
     <state x="194" y="4" key="SettingsEditor" timestamp="1589515695219">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="194" y="4" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1589515695219" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1589688533421">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1589688533421" />
   </component>
 </project>
