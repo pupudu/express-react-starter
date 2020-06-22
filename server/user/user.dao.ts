@@ -1,4 +1,5 @@
 import { BaseDao } from '@core/base.dao';
+import dayjs from 'dayjs';
 
 export class UserDao extends BaseDao {
   async saveUser({ name, birthday, gender, email, password }) {
@@ -7,7 +8,7 @@ export class UserDao extends BaseDao {
         INSERT INTO userdetails (name,birthday,gender,email, password)
         VALUES (?, ?, ?, ?, ?)
     `,
-      [name, birthday, gender, email, password],
+      [name, dayjs(birthday).format('YYYY-MM-DD'), gender, email, password],
     );
   }
 }

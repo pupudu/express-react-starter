@@ -114,7 +114,7 @@ const SignUp = () => {
             name: '',
             email: '',
             emailAgain: '',
-            date: Date.now(),
+            birthday: Date.now(),
             gender: '',
           }}
           onSubmit={async (data) => {
@@ -133,7 +133,7 @@ const SignUp = () => {
         >
           <Grid templateColumns="repeat(1, 1fr)" gap={6} mb="1rem" ml="25%" mr="25%">
             <FormInput name="name" label="Name" />
-            <FormDate name="date" label="Birthday" />
+            <FormDate name="birthday" label="Birthday" />
             <FormSelect name="gender" label="Gender">
               <MenuItem value="">
                 <em>Other</em>
