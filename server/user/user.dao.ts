@@ -20,8 +20,14 @@ export class UserDao extends BaseDao {
   }
   async hashPassword(password) {
     const salt = await bcrypt.genSalt(10);
-    const passwordHash = await bcrypt.hash(password, salt);
-    password = passwordHash;
-    return password;
+    return await bcrypt.hash(password, salt);
+  }
+  async getUser(email) {
+    return await this.query(
+      `
+    SELECT * FROM userdetails WHERE email=?
+    `,
+      [email],
+    );
   }
 }

@@ -1,17 +1,37 @@
 import express from 'express';
 import path from 'path';
+import passport from 'passport';
 import { RootRouter } from './router';
 import { internalErrorHandler, notFoundHandler } from '@core/error-handlers';
 import { DatabaseConnection } from '@core/database.connection';
+import session from 'express-session';
+import { PassportService } from './passport.service';
 
 const app = express();
 
 (async () => {
   await DatabaseConnection.init();
+  const passportService = await PassportService.init();
+
+  //passport setup
+  passportService.setup();
 
   // register core middleware
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
+
+  //Express Session
+  app.use(
+    session({
+      secret: 'secret',
+      resave: true,
+      saveUninitialized: true,
+    }),
+  );
+
+  //passport middleware
+  app.use(passport.initialize());
+  app.use(passport.session());
 
   // register application routes
   app.use(await RootRouter.getRouter());

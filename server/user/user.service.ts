@@ -7,4 +7,7 @@ export class UserService extends BaseModule {
   async saveUser(data) {
     return await this.dao.saveUser(data);
   }
+  async getUser(email) {
+    return await this.dao.getUser(email);
+  }
 }
