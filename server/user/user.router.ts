@@ -10,9 +10,9 @@ export class UserRouter extends BaseRouter {
     this.router.post('/signup', this.signupUser.bind(this));
     this.router.post(
       '/login',
-      passport.authenticate('local', { failureRedirect: '/login' }),
+      passport.authenticate('local', { failureRedirect: '/login2' }),
       function (req, res) {
-        res.redirect('/');
+        res.json('success');
       },
     );
   }

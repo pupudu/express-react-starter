@@ -43,6 +43,7 @@ const app = express();
   // register error handler middleware
   app.use(notFoundHandler);
   app.use(internalErrorHandler);
+
   const PORT = process.env.port || 8000;
   app.listen(PORT, () => {
     console.log(`Server started in port ${PORT}`);

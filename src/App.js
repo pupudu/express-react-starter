@@ -3,15 +3,6 @@ import { Button, Card, CardContent, MenuItem } from '@material-ui/core';
 import { Grid, Box, Heading, Stack } from '@chakra-ui/core';
 import { Routes, Route } from 'react-router-dom';
 import { Form, FormDate, FormInput, FormSelect } from 'core/signup';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import clsx from 'clsx';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import FormControl from '@material-ui/core/FormControl';
-import IconButton from '@material-ui/core/IconButton';
-import { useStyles } from './styles';
 import { Home } from './Home';
 import { Pricing } from './Pricing';
 import { DataView } from './DataView';
@@ -19,26 +10,7 @@ import { fetch } from './core/fetch';
 import { Alert } from '@material-ui/lab';
 
 const Login = () => {
-  const classes = useStyles();
-  const [values, setValues] = React.useState({
-    amount: '',
-    password: '',
-    weight: '',
-    weightRange: '',
-    showPassword: false,
-  });
-
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
-
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
-  };
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+  const [showAlert, setShowAlert] = useState(false);
   return (
     <Card>
       <CardContent>
@@ -55,35 +27,21 @@ const Login = () => {
             email: '',
             password: '',
           }}
-          onSubmit={(data) => {
-            console.log('Login Successful');
-            alert(JSON.stringify(data, null, 2));
+          onSubmit={async (data) => {
+            const res = await fetch({
+              url: '/user/login',
+              method: 'post',
+              body: data,
+            });
+            if (res === 'success') {
+              window.location.pathname = '/';
+            }
           }}
         >
           <Grid templateColumns="repeat(1, 1fr)" gap={6} mb="1rem" mb="1rem" ml="25%" mr="25%">
             <FormInput name="email" label="Email" type="email" />
-            <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
-              <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-              <OutlinedInput
-                id="outlined-adornment-password"
-                type={values.showPassword ? 'text' : 'password'}
-                value={values.password}
-                onChange={handleChange('password')}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end"
-                    >
-                      {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                    </IconButton>
-                  </InputAdornment>
-                }
-                labelWidth={70}
-              />
-            </FormControl>
+            <FormInput type="password" label="Password" name="password" labelWidth={70} />
+            {showAlert && <Alert severity="success">This is a success alert — check it out!</Alert>}
           </Grid>
           <Grid justifyContent="center">
             <Button size="large" color="secondary" variant="contained" type="submit">

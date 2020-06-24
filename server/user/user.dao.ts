@@ -23,11 +23,12 @@ export class UserDao extends BaseDao {
     return await bcrypt.hash(password, salt);
   }
   async getUser(email) {
-    return await this.query(
+    const rows = await this.query(
       `
     SELECT * FROM userdetails WHERE email=?
     `,
       [email],
     );
+    return rows[0];
   }
 }
