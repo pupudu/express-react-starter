@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import Main from './Main';
 import { ThemeProvider, CSSReset } from '@chakra-ui/core';
 import MaterialThemeProvider from 'core/Layout/theme';
 import { Layout } from 'core/Layout';
+import { MainLayout } from 'core/Layout/mainIndex';
 import { theme } from 'core/theme';
 import { FetchBoundary } from 'core/fetch';
 import { BrowserRouter } from 'react-router-dom';
@@ -30,7 +32,13 @@ const AppWrapper = () => {
                   </FetchBoundary>
                 </Layout>
               )}
-              {a === 1 && <div>login</div>}
+              {a === 1 && (
+                <MainLayout darkMode={darkMode} toggleDarkMode={toggle}>
+                  <FetchBoundary>
+                    <Main />
+                  </FetchBoundary>
+                </MainLayout>
+              )}
               {a === 2 && <div>Sign Up</div>}
             </BrowserRouter>
           </ThemeProvider>
