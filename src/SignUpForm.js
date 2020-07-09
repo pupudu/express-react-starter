@@ -30,14 +30,14 @@ export const SignUpForm = () => {
       <Grid item sm={8}>
         <Card>
           <CardContent className={classes.cardContent}>
-            <Stack spacing={3} textAlign="center" mb="30px" mt="20px" as="h1">
+            <Stack spacing={3} textAlign="center" mb="10px" mt="10px" as="h1">
               <Heading isTruncated fontSize="100px" fontFamily="Times New Roman">
                 Sign Up
               </Heading>
               <Heading isTruncated>
                 <Typography className={classes.headerContent}>
                   Already have a DocMora account?&nbsp;
-                  <Link href="#" color="inherit">
+                  <Link href="/login" color="inherit">
                     Log In
                   </Link>
                 </Typography>
@@ -53,7 +53,7 @@ export const SignUpForm = () => {
               }}
               onSubmit={async (data) => {
                 const res = await fetch({
-                  url: '/user/signup',
+                  url: '/api/user/signup',
                   method: 'post',
                   body: data,
                 });
@@ -69,9 +69,6 @@ export const SignUpForm = () => {
                 <FormInput name="name" label="Name" className={classes.formContent} />
               </Grid>
               <Grid justifyContent="center">
-                <FormInput name="name" label="Name" className={classes.formContent} />
-              </Grid>
-              <Grid justifyContent="center">
                 <FormDate name="birthday" label="Birthday" className={classes.formContent} />
               </Grid>
               <Grid justifyContent="center">
@@ -81,6 +78,13 @@ export const SignUpForm = () => {
                   </MenuItem>
                   <MenuItem value="male">Male</MenuItem>
                   <MenuItem value="female">Female</MenuItem>
+                </FormSelect>
+              </Grid>
+              <Grid justifyContent="center">
+                <FormSelect name="signinAs" label="Sign in As" className={classes.formContent}>
+                  <MenuItem value="client">Client</MenuItem>
+                  <MenuItem value="translator">Translator</MenuItem>
+                  <MenuItem value="itspecialist">IT Specialist</MenuItem>
                 </FormSelect>
               </Grid>
               <Grid justifyContent="center">

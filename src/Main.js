@@ -8,12 +8,8 @@ import CardActions from '@material-ui/core/CardActions';
 import InputIcon from '@material-ui/icons/Input';
 import React from 'react';
 import { useStyles } from './mainStyles';
-import { Box } from '@chakra-ui/core';
-import { Routes, Route } from 'react-router-dom';
-import { SignUpForm } from './SignUpForm';
-import { LoginForm } from './LoginForm';
 
-const MainHome = () => {
+export const MainHome = () => {
   const classes = useStyles();
   return (
     <div className={classes.background}>
@@ -35,6 +31,7 @@ const MainHome = () => {
             color="secondary"
             className={classes.button}
             startIcon={<InputIcon />}
+            href="/signup"
           >
             Register
           </Button>
@@ -43,6 +40,7 @@ const MainHome = () => {
             color="primary"
             className={classes.button}
             startIcon={<LockOpenIcon />}
+            href="/login"
           >
             Login
           </Button>
@@ -51,17 +49,3 @@ const MainHome = () => {
     </div>
   );
 };
-function Main() {
-  return (
-    <div>
-      <Box mt="1rem">
-        <Routes>
-          <Route path="/" element={<MainHome />} />
-          <Route path="/signup" element={<SignUpForm />} />
-          <Route path="/login" element={<LoginForm />} />
-        </Routes>
-      </Box>
-    </div>
-  );
-}
-export default Main;

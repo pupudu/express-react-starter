@@ -55,7 +55,7 @@ export function Sidebar(props) {
           <Divider />
           <List>
             {list.map((item, index) => (
-              <Link to={item.to} key={index}>
+              <Link to={`/app/${item.to}`} key={index}>
                 <ListItem button>
                   <ListItemIcon>{item.Icon}</ListItemIcon>
                   <ListItemText primary={item.text} />

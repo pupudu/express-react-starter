@@ -15,11 +15,18 @@ export class UserRouter extends BaseRouter {
         res.json('success');
       },
     );
+    this.router.get('/isauthenticated', this.checkAuthenticated.bind(this));
   }
 
   async signupUser(req, res) {
-    const { name, birthday, gender, email, password } = req.body;
-    await this.service.saveUser({ name, birthday, gender, email, password });
+    const { name, birthday, gender, signinAs, email, password } = req.body;
+    await this.service.saveUser({ name, birthday, gender, signinAs, email, password });
     res.json({ msg: 'Signup Success!', status: 'success' });
+  }
+  async checkAuthenticated(req, res) {
+    if (req.isAuthenticated()) {
+      return res.json({ session: true });
+    }
+    return res.json({ session: false });
   }
 }

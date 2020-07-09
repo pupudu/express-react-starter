@@ -1,3 +1,4 @@
+import 'tsconfig-paths/register';
 import express from 'express';
 import path from 'path';
 import passport from 'passport';
@@ -34,7 +35,7 @@ const app = express();
   app.use(passport.session());
 
   // register application routes
-  app.use(await RootRouter.getRouter());
+  app.use('/api', await RootRouter.getRouter());
 
   // register the webapp assets and root index.html
   app.use(express.static(path.resolve(`build`)));

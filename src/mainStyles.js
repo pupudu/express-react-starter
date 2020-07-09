@@ -19,7 +19,7 @@ export const useStyles = makeStyles((theme) => ({
 
   formContent: {
     width: '500px',
-    marginBottom: '20px',
+    marginBottom: '15px',
   },
   cardMedia: {
     marginTop: '50px',

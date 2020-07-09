@@ -39,7 +39,7 @@ export const LoginForm = () => {
               <Heading isTruncated>
                 <Typography className={classes.headerContent}>
                   Don't have an account yet?&nbsp;
-                  <Link href="#" color="inherit">
+                  <Link href="/signup" color="inherit">
                     Sign Up
                   </Link>
                 </Typography>
@@ -52,12 +52,14 @@ export const LoginForm = () => {
               }}
               onSubmit={async (data) => {
                 const res = await fetch({
-                  url: '/user/login',
+                  url: '/api/user/login',
                   method: 'post',
                   body: data,
                 });
                 if (res === 'success') {
                   window.location.pathname = '/';
+                } else {
+                  console.log(res);
                 }
               }}
             >

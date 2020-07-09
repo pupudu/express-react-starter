@@ -115,6 +115,7 @@ export function useFetch<T = any>(baseConfig: UseLayoutFetchConfig): T {
       let result;
       try {
         result = await fetch(options);
+        console.log(result);
       } catch (e) {
         result = e;
       }
