@@ -38,7 +38,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   //login section
   avatar: {
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: '#DC004E',
     margin: '10px auto',
   },
   form: {

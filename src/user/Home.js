@@ -28,7 +28,7 @@ export const Home = () => {
           size="large"
           className={classes.button}
           startIcon={<InputIcon />}
-          href="/signup"
+          href="/pricing"
         >
           Explore More
         </Button>
@@ -50,7 +50,7 @@ export const Home = () => {
                 size="large"
                 className={classes.button}
                 startIcon={<InputIcon />}
-                href="/signup"
+                href="/order"
               >
                 Order Online
               </Button>
