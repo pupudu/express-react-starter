@@ -3,16 +3,15 @@ import dayjs from 'dayjs';
 import bcrypt from 'bcryptjs';
 
 export class UserDao extends BaseDao {
-  async saveUser({ name, birthday, gender, signinAs, email, password }) {
+  async saveUser({ name, birthday, signinAs, email, password }) {
     return await this.query(
       `
-        INSERT INTO userdetails (name,birthday,gender, signinAs,email, password )
-        VALUES (?, ?, ?, ?, ?, ?)
+        INSERT INTO userdetails (name,birthday, signinAs,email, password )
+        VALUES (?, ?, ?, ?, ?)
     `,
       [
         name,
         dayjs(birthday).format('YYYY-MM-DD'),
-        gender,
         signinAs,
         email,
         await this.hashPassword(password),

@@ -1,4 +1,4 @@
-import { useFetch } from './core/fetch';
+import { useFetch } from '../core/fetch';
 import { useStyles } from './styles';
 import TableContainer from '@material-ui/core/TableContainer';
 import Paper from '@material-ui/core/Paper';
@@ -9,7 +9,7 @@ import TableBody from '@material-ui/core/TableBody';
 import React from 'react';
 import { StyledTableCell, StyledTableRow } from './Table';
 
-export const DataView = () => {
+export const MyOrders = () => {
   const data = useFetch({ url: '/previousDoc/showFiles' });
   const classes = useStyles();
   return (

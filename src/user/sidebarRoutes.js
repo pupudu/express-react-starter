@@ -5,7 +5,9 @@ import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 export default [
   [
     { to: '/', text: 'Home', Icon: <HomeIcon /> },
-    { to: '/data', text: 'Documents', Icon: <InsertDriveFileIcon /> },
+    { to: '/allOrders', text: 'My Orders', Icon: <InsertDriveFileIcon /> },
   ],
   [{ to: '/pricing', text: 'Pricing', Icon: <MonetizationOnIcon /> }],
+  [{ to: '/order', text: 'Order Now', Icon: <MonetizationOnIcon /> }],
+  [{ to: '/support', text: 'Customer Support', Icon: <MonetizationOnIcon /> }],
 ];

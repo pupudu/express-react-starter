@@ -1,15 +1,21 @@
 import React from 'react';
 import clsx from 'clsx';
-import { AppBar, Toolbar, Typography, makeStyles, Grid, Switch } from '@material-ui/core';
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  makeStyles,
+  Grid,
+  Switch,
+} from '@material-ui/core';
+import { Menu } from '@material-ui/icons';
+import { drawerWidth } from './Sidebar';
 import logo from './logo.png';
 
 const useStyles = makeStyles((theme) => ({
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
   logo: {
     maxWidth: 250,
-    marginLeft: 50,
   },
   hide: {
     display: 'none',
@@ -22,6 +28,8 @@ const useStyles = makeStyles((theme) => ({
     zIndex: theme.zIndex.drawer + 1,
   },
   appBarShift: {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginLeft: drawerWidth,
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
@@ -32,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export function MainHeader(props) {
+export function UserHeader(props) {
   const classes = useStyles();
 
   return (
@@ -43,6 +51,15 @@ export function MainHeader(props) {
       })}
     >
       <Toolbar>
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          onClick={props.handleDrawerToggle}
+          edge="start"
+          className={clsx(classes.menuButton)}
+        >
+          <Menu />
+        </IconButton>
         <img src={logo} alt="logo" className={classes.logo} />
         <Typography className={classes.title}></Typography>
         <Typography component="div">

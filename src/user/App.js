@@ -3,7 +3,9 @@ import { Box } from '@chakra-ui/core';
 import { Routes, Route } from 'react-router-dom';
 import { Home } from './Home';
 import { Pricing } from './Pricing';
-import { DataView } from './DataView';
+import { MyOrders } from './MyOrders';
+import { OrderNow } from './OrderNow';
+import { CustomerSupport } from './CustomerSupport';
 
 function App() {
   return (
@@ -12,7 +14,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/pricing" element={<Pricing />} />
-          <Route path="/data" element={<DataView />} />
+          <Route path="/allOrders" element={<MyOrders />} />
+          <Route path="/order" element={<OrderNow />} />
+          <Route path="/support" element={<CustomerSupport />} />
         </Routes>
       </Box>
     </div>

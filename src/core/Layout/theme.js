@@ -8,10 +8,10 @@ export default function MaterialThemeProvider(props) {
         palette: {
           type: props.darkMode ? 'dark' : 'light',
           primary: {
-            main: '#5f4f90',
+            main: '#115293',
           },
           secondary: {
-            main: '#52a17d',
+            main: '#DC004E',
           },
         },
       }),

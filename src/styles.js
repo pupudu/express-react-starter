@@ -1,19 +1,104 @@
 import { makeStyles } from '@material-ui/core/styles';
+import mainImage from 'images/main.jpg';
+import loginImage from 'images/log.jpg';
+import signUpImage from 'images/signup.jpg';
 
 export const useStyles = makeStyles((theme) => ({
   root: {
+    height: '100vh',
+  },
+
+  // home section
+  paperContainer: {
+    padding: '150px 5% 0',
+    alignItems: 'center',
+  },
+  homeHeading: {
+    fontFamily: 'Galada',
+    textAlign: 'center',
+  },
+  homeParagraph: {
+    textAlign: 'center',
+    textTransform: 'uppercase',
+  },
+  homeContentIcon: {
+    margin: '10px',
+  },
+  mainImage: {
+    backgroundImage: `url(${mainImage})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  },
+  buttonRow: {
+    textAlign: 'center',
+  },
+  button: {
+    margin: '5%',
+  },
+  //login section
+  avatar: {
+    backgroundColor: theme.palette.secondary.main,
+    margin: '10px auto',
+  },
+  form: {
+    width: '100%',
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+  loginImage: {
+    backgroundImage: `url(${loginImage})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  },
+  loginPaperContainer: {
     display: 'flex',
-    flexWrap: 'wrap',
+    flexDirection: 'column',
+    padding: '100px 10% 0',
+    alignItems: 'center',
+  },
+
+  // signup Section
+
+  signUpImage: {
+    backgroundImage: `url(${signUpImage})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  },
+
+  // ready
+  cardContent: {
+    textAlign: 'center',
+    marginTop: '50px',
+    height: '800px',
+  },
+  headerContent: {
+    fontSize: '25px',
+    fontFamily: 'Times New Roman',
+  },
+
+  formContent: {
+    width: '40vw',
+    marginBottom: '15px',
+  },
+  cardMedia: {
+    marginTop: '50px',
+    height: '800px',
   },
   background: {
     display: 'inline-block',
-    overflow: 'hidden',
     position: 'relative',
     width: '100%',
+    height: '100%',
   },
   back: {
     pointerEvents: 'none',
     position: 'absolute',
+    marginTop: 50,
     width: ' 100%',
     height: '100%',
     zIndex: '-1',
@@ -22,17 +107,15 @@ export const useStyles = makeStyles((theme) => ({
     pointerEvents: 'none',
     position: 'absolute',
     marginLeft: '12%',
-    marginTop: 50,
+    marginTop: 10,
     height: 250,
     width: ' 65%',
     zIndex: '-1',
   },
-  avatar: {
-    marginLeft: '20%',
-  },
   cardcontent: {
     marginLeft: '30%',
-    marginTop: 75,
+    marginTop: 10,
+    marginBottom: 100,
     height: 200,
     width: ' 75%',
     zIndex: '-1',
@@ -49,13 +132,13 @@ export const useStyles = makeStyles((theme) => ({
     display: 'inline-block',
   },
   large: {
-    width: theme.spacing(7),
-    height: theme.spacing(7),
+    width: theme.spacing(20),
+    height: theme.spacing(20),
   },
-  button: {
+
+  loginButton: {
     margin: theme.spacing(1),
-    marginRight: '100px',
-    marginLeft: '10%',
+    fontSize: '20px',
   },
   container: {},
   margin: {
@@ -67,28 +150,14 @@ export const useStyles = makeStyles((theme) => ({
   textField: {
     width: '100ch',
   },
-  heading: {
-    marginTop: 200,
-    marginBottom: 50,
-    color: 'white',
-    textAlign: 'center',
-    textShadow: '4px 4px 3px black',
-    fontFamily: 'Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif',
-  },
-  para: {
-    textAlign: 'center',
-    fontSize: 25,
-    textTransform: 'uppercase',
-    marginBottom: 200,
-    color: 'white',
-    textShadow: '2px 2px 3px black',
-  },
+
   details: {
     display: 'flex',
     flexDirection: 'column',
   },
   content: {
     flex: '1 0 auto',
+    paddingTop: '500px',
   },
   cover: {
     width: '50%',

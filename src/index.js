@@ -1,25 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import { Navigate } from 'react-router';
-import App from './App';
-import { MainHome } from './Main';
+import App from './user/App';
+import { MainHome } from './home';
 import { ThemeProvider, CSSReset } from '@chakra-ui/core';
 import MaterialThemeProvider from 'core/Layout/theme';
 import { Layout } from 'core/Layout';
-import { MainLayout } from 'core/Layout/mainIndex';
+import { UserLayout } from 'core/Layout/user';
 import { theme } from 'core/theme';
 import { FetchBoundary, useFetch } from 'core/fetch';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useMediaQuery } from '@material-ui/core';
 import DayJsUtils from '@date-io/dayjs';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import { SignUpForm } from './SignUpForm';
-import { LoginForm } from './LoginForm';
+import { Signup } from './signup';
+import { Signin } from './signin';
 
 const AppWrapper = (props) => {
   const { darkMode, toggle } = props;
   const data = useFetch({ url: '/api/user/isauthenticated' });
-  console.log(data);
 
   if (window.location.pathname === '/') {
     window.location.pathname = '/app';
@@ -27,7 +25,7 @@ const AppWrapper = (props) => {
   }
   if (data.session === false) {
     if (!['/login', '/signup', '/home'].includes(window.location.pathname)) {
-      window.location.pathname = '/login';
+      window.location.pathname = '/home';
       return <div></div>;
     }
   } else {
@@ -44,9 +42,9 @@ const AppWrapper = (props) => {
           <Route
             path="/app/*"
             element={
-              <Layout darkMode={darkMode} toggleDarkMode={toggle}>
+              <UserLayout darkMode={darkMode} toggleDarkMode={toggle}>
                 <App />
-              </Layout>
+              </UserLayout>
             }
           />
         </Routes>
@@ -57,25 +55,25 @@ const AppWrapper = (props) => {
           <Route
             path="/home"
             element={
-              <MainLayout darkMode={darkMode} toggleDarkMode={toggle}>
+              <Layout darkMode={darkMode} toggleDarkMode={toggle}>
                 <MainHome />
-              </MainLayout>
+              </Layout>
             }
           />
           <Route
             path="/signup"
             element={
-              <MainLayout darkMode={darkMode} toggleDarkMode={toggle}>
-                <SignUpForm />
-              </MainLayout>
+              <Layout darkMode={darkMode} toggleDarkMode={toggle}>
+                <Signup />
+              </Layout>
             }
           />
           <Route
             path="/login"
             element={
-              <MainLayout darkMode={darkMode} toggleDarkMode={toggle}>
-                <LoginForm />
-              </MainLayout>
+              <Layout darkMode={darkMode} toggleDarkMode={toggle}>
+                <Signin />
+              </Layout>
             }
           />
         </Routes>
