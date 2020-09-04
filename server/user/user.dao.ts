@@ -3,11 +3,11 @@ import dayjs from 'dayjs';
 import bcrypt from 'bcryptjs';
 
 export class UserDao extends BaseDao {
-  async saveUser({ name, birthday, signinAs, email, password }) {
+  async saveUser({ name, birthday, signinAs, email, password, translateFrom, translateTo }) {
     return await this.query(
       `
-        INSERT INTO userdetails (name,birthday, signinAs,email, password )
-        VALUES (?, ?, ?, ?, ?)
+        INSERT INTO userdetails (name,birthday, signinAs,email, password, translateFrom, translateTo )
+        VALUES (?, ?, ?, ?, ?, ?, ?)
     `,
       [
         name,
@@ -15,6 +15,8 @@ export class UserDao extends BaseDao {
         signinAs,
         email,
         await this.hashPassword(password),
+        translateFrom,
+        translateTo,
       ],
     );
   }
@@ -25,10 +27,20 @@ export class UserDao extends BaseDao {
   async getUser(email) {
     const rows = await this.query(
       `
-    SELECT * FROM userdetails WHERE email=?
+    SELECT * FROM database.userdetails WHERE email=?
     `,
       [email],
     );
+    return rows[0];
+  }
+  async getUserInformation(email) {
+    const rows = await this.query(
+      `
+    SELECT * FROM database.userdetails WHERE email=?
+    `,
+      [email],
+    );
+
     return rows[0];
   }
 }

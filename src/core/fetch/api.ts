@@ -24,7 +24,7 @@ const hooks: {
 async function api(url, options) {
   return axios({
     url,
-    data: parseParam(options.body),
+    data: options.body,
     headers: options.headers,
     method: options.method,
   });

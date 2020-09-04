@@ -31,5 +31,5 @@
   "exclude": [
     "**/__tests__/*",
     "package.json"
-  ]
+  ],
 }

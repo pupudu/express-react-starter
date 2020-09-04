@@ -45,7 +45,7 @@ export const useStyles = makeStyles((theme) => ({
     textTransform: 'uppercase',
   },
   secondaryParagraph: {
-    textAlign: 'center',
+    textAlign: 'Left',
     textTransform: 'uppercase',
   },
   homeContentIcon: {
@@ -69,6 +69,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: '20px',
+    height: '50px',
   },
 
   // OrderNow
@@ -77,8 +78,7 @@ export const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     width: '50vw',
-    height: '70vh',
-    padding: '10vh 5vw',
+    padding: '20px 5vw 10vh',
   },
   orderHeading: {
     fontFamily: 'Anton',
@@ -87,27 +87,51 @@ export const useStyles = makeStyles((theme) => ({
   orderBackgroundImage: {
     display: 'flex',
     flexDirection: 'column',
-    padding: '150px 5% 150px',
+    padding: '100px 5% 150px',
     alignItems: 'center',
     height: '100vh',
     backgroundImage: `url(${orderImage})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   },
-
+  pricingAndLanguageSection: {
+    borderTop: `1px solid ${theme.palette.divider}`,
+    marginTop: theme.spacing(8),
+    paddingTop: theme.spacing(8),
+    width: '100%',
+    paddingRight: '10px',
+    paddingBottom: theme.spacing(3),
+  },
   uploadImage: {
     width: '10vw',
     margin: '20px',
   },
-  statusContainer: {
-    padding: '150px 5%',
-    height: '100vh',
-  },
-  paperStatus: {
+  uploadFilePaper: {
     display: 'flex',
     flexDirection: 'column',
     padding: '5%',
     alignItems: 'center',
+    marginBottom: '20px',
+  },
+  statusContainer: {
+    padding: '50px 5%',
+    width: '100%',
+  },
+  paperStatus: {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: ' 0 10% 5%',
+    alignItems: 'center',
+  },
+  uploadButton: {
+    padding: '10px 20px',
+    marginTop: '5px',
+  },
+  orderDetailsSubmitButton: {
+    margin: '30px',
+  },
+  stripeButton: {
+    margin: '30px',
   },
   //Pricing
   pricePageMainContainer: {
@@ -173,12 +197,15 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: '10px',
   },
   formControl: {
-    margin: theme.spacing(1),
+    marginTop: '50px',
     width: '100%',
   },
   languageIcon: {
     width: '20px',
     marginRight: '10px',
+  },
+  pricingTable: {
+    margin: '50px 0',
   },
   //customer  support
   csBackgroundImage: {
@@ -198,122 +225,68 @@ export const useStyles = makeStyles((theme) => ({
   submitButton: {
     marginRight: '10px',
   },
-  // Me
-  background: {
-    display: 'inline-block',
-    overflow: 'hidden',
-    position: 'relative',
-    width: '100%',
-  },
-  back: {
-    pointerEvents: 'none',
-    position: 'absolute',
-    width: ' 100%',
-    height: '100%',
-    zIndex: '-1',
-  },
-  card: {
-    pointerEvents: 'none',
-    position: 'absolute',
-    marginLeft: '12%',
-    marginTop: 50,
-    height: 250,
-    width: ' 65%',
-    zIndex: '-1',
-  },
-  avatar: {
-    marginLeft: '20%',
-  },
-  cardcontent: {
-    marginLeft: '30%',
-    marginTop: 75,
-    height: 200,
-    width: ' 75%',
-    zIndex: '-1',
-  },
-  cardtypo1: {
-    fontSize: '20px',
-    fontWeight: 'bold',
-    color: 'white',
-    display: 'inline-block',
-  },
-  cardtypo2: {
-    fontSize: '20px',
-    color: 'white',
-    display: 'inline-block',
-  },
-  large: {
-    width: theme.spacing(7),
-    height: theme.spacing(7),
-  },
-
-  container: {},
-  margin: {
-    margin: theme.spacing(1),
-  },
-  withoutLabel: {
-    marginTop: theme.spacing(1),
-  },
-  textField: {
-    width: '100ch',
-  },
-  heading: {
-    marginTop: 200,
-    marginBottom: 50,
-    color: 'white',
-    textAlign: 'center',
-    textShadow: '4px 4px 3px black',
-    fontFamily: 'Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif',
-  },
-  para: {
-    textAlign: 'center',
-    fontSize: 25,
-    textTransform: 'uppercase',
-    marginBottom: 200,
-    color: 'white',
-    textShadow: '2px 2px 3px black',
-  },
-  details: {
+  // My Orders Page
+  myOrdersMainContainer: {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
+    padding: '100px 50px 50px',
   },
-  content: {
-    flex: '1 0 auto',
-  },
-  cover: {
-    width: '50%',
-  },
-  card2: {
+  languageSelectContainer: {
     display: 'flex',
-    flexWrap: 'wrap',
-    marginTop: '100px',
-    height: '200px',
+    flexDirection: 'column',
+    padding: '150px 5% 0',
+    justifyContent: 'flex-start',
   },
-  card2head: {
-    marginBottom: '30px',
-    marginTop: '20px',
-    marginLeft: '20%',
-    fontWeight: 'bold',
+  chooseFileButton: {
+    marginLeft: '70%',
   },
-  card2body: {
-    fontWeight: 'bold',
+
+  // All Jobs
+  allJobsMainContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '100px 50px 50px',
   },
-  priceheading: {
-    marginTop: 50,
-    marginBottom: 50,
+  tabsContainer: {
+    width: '100%',
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
+  },
+  //Order Page
+  orderPagePaper: {
+    padding: '5%',
+    height: '100vh',
+    width: '100%',
+  },
+  orderMainContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '100px 50px 50px',
+  },
+
+  //Language Container
+  languageContainer: {
+    padding: '5% 10%',
+    width: '100%',
+    margin: '50px 0',
+  },
+  orderPaperContainer: {
+    padding: '150px 5%',
+    width: '100%',
+  },
+  fileName: {
     textAlign: 'center',
-    fontFamily: 'Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif',
   },
-  table: {
-    minWidth: 500,
+  horizontalLine: {
+    width: '80%',
+    border: '1px solid white',
+    marginBottom: '20px',
+    color: 'black',
   },
-  tablehead: {
-    fontSize: '30px',
-  },
-  tablespecial: {
-    fontSize: 'medium',
+  containerDescription: {
+    textAlign: 'left',
   },
 }));
-
-//fonts
-//<link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">

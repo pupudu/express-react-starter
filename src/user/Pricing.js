@@ -27,7 +27,7 @@ export const Pricing = () => {
       title: 'Free',
       price: '1',
       description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
-      buttonText: 'Sign up for free',
+      buttonText: 'Get started',
       buttonVariant: 'outlined',
     },
     {
@@ -52,7 +52,7 @@ export const Pricing = () => {
         'Help center access',
         'Phone & email support',
       ],
-      buttonText: 'Contact us',
+      buttonText: 'Get started',
       buttonVariant: 'outlined',
     },
   ];

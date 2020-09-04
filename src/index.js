@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import App from './user/App';
-import { MainHome } from './home';
+import { MainHome } from './Home';
 import { ThemeProvider, CSSReset } from '@chakra-ui/core';
 import MaterialThemeProvider from 'core/Layout/theme';
 import { Layout } from 'core/Layout';
@@ -12,13 +12,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useMediaQuery } from '@material-ui/core';
 import DayJsUtils from '@date-io/dayjs';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import { Signup } from './signup';
-import { Signin } from './signin';
+import { Signup } from './Signup';
+import { Signin } from './Signin';
 
 const AppWrapper = (props) => {
   const { darkMode, toggle } = props;
   const data = useFetch({ url: '/api/user/isauthenticated' });
-
   if (window.location.pathname === '/') {
     window.location.pathname = '/app';
     return <div></div>;

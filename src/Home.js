@@ -13,7 +13,7 @@ export const MainHome = () => {
   return (
     <Grid container component="main" className={classes.root}>
       <Grid item xs={false} sm={5} className={classes.mainImage} />
-      <Grid item xs={12} sm={7} component={Paper} elevation={6} square >
+      <Grid item xs={12} sm={7} component={Paper} elevation={6} square>
         <div className={classes.paperContainer}>
           <Typography variant="h1" gutterBottom className={classes.homeHeading}>
             Welcome to MoraDoc Translator

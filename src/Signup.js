@@ -13,8 +13,34 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import MenuItem from '@material-ui/core/MenuItem';
 
 export const Signup = () => {
-  const [showAlert, setShowAlert] = useState(false);
   const classes = useStyles();
+
+  const languages = ['Sinhala', 'Tamil', 'English'];
+
+  const [showAlert, setShowAlert] = useState(false);
+  const [isTranslator, setIsTranslator] = useState(false);
+  const [translateFrom, setTranslateFrom] = useState('');
+  const [, setTranslateTo] = useState('');
+  const [, setSignInAs] = useState('');
+
+  function getTargetLanguage(event) {
+    const language = event.target.value;
+    setTranslateTo(language);
+  }
+  function handleChange(event) {
+    if (event.target.value === 'translator') {
+      setIsTranslator(true);
+    } else {
+      setIsTranslator(false);
+      setTranslateFrom('');
+      setTranslateTo('');
+    }
+    setSignInAs(event.target.value);
+  }
+  function getSourceLanguage(event) {
+    const language = event.target.value;
+    setTranslateFrom(language);
+  }
   return (
     <Grid container component="main" className={classes.root}>
       <Grid item sm={false} md={6} className={classes.loginImage} />
@@ -31,10 +57,13 @@ export const Signup = () => {
             initialValues={{
               name: '',
               email: '',
-              emailAgain: '',
+              signinAs: '',
+              translateTo: '',
+              translateFrom: '',
               birthday: Date.now(),
             }}
             onSubmit={async (data) => {
+              console.log(data);
               const res = await fetch({
                 url: '/api/user/signup',
                 method: 'post',
@@ -50,11 +79,48 @@ export const Signup = () => {
           >
             <FormInput name="name" label="Name" className={classes.formContent} />
             <FormDate name="birthday" label="Birthday" className={classes.formContent} />
-            <FormSelect name="signinAs" label="Sign in As" className={classes.formContent}>
+            <FormSelect
+              onChange={handleChange}
+              name="signinAs"
+              label="Sign in As"
+              className={classes.formContent}
+            >
               <MenuItem value="client">Client</MenuItem>
               <MenuItem value="translator">Translator</MenuItem>
               <MenuItem value="itspecialist">IT Specialist</MenuItem>
             </FormSelect>
+            {isTranslator && (
+              <FormSelect
+                name="translateFrom"
+                label="Translate From"
+                className={classes.formContent}
+                onChange={getSourceLanguage}
+              >
+                <MenuItem name="english" value="English">
+                  English
+                </MenuItem>
+                <MenuItem name="sinhala" value="Sinhala">
+                  Sinhala
+                </MenuItem>
+                <MenuItem name="tamil" value="Tamil">
+                  Tamil
+                </MenuItem>
+              </FormSelect>
+            )}
+            {isTranslator && (
+              <FormSelect
+                name="translateTo"
+                label="Translate To"
+                className={classes.formContent}
+                onChange={getTargetLanguage}
+              >
+                {languages.map((item) => {
+                  if (item !== translateFrom) {
+                    return <MenuItem value={item}>{item}</MenuItem>;
+                  }
+                })}
+              </FormSelect>
+            )}
             <FormInput name="email" label="Email" type="email" className={classes.formContent} />
             <FormInput
               type="password"

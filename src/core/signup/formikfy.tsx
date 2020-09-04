@@ -21,13 +21,14 @@ export const formikfy = (Component, presetProps: any = {}) => {
                 {...presetProps}
                 value={(values && values[name]) || ''}
                 error={touched[name] && errors[name]}
+                variant={variant}
+                {...props}
                 onChange={(e) => {
+                  props.onChange?.(e);
                   setFieldTouched(name);
                   console.log(name, e);
                   handleChange(e);
                 }}
-                variant={variant}
-                {...props}
               />
             </FormControl>
           );

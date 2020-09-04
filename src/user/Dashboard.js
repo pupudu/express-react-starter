@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 
-export const Home = () => {
+export const Dashboard = () => {
   const classes = useStyles();
   return (
     <div className={classes.homePageMainContainer}>

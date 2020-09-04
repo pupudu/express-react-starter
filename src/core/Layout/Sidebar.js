@@ -1,4 +1,3 @@
-
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -9,6 +8,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import routes from '../../user/sidebarRoutes';
+import { useFetch } from '../fetch';
 
 export const drawerWidth = 240;
 
@@ -24,6 +24,8 @@ export const useStyles = makeStyles(() => ({
 }));
 
 export function Sidebar(props) {
+  const userInformation = useFetch({ url: '/api/user/get-user-information' });
+  const currentUserType = userInformation.signinAs;
   const classes = useStyles();
   return (
     <Drawer
@@ -35,21 +37,23 @@ export function Sidebar(props) {
         paper: classes.drawerPaper,
       }}
     >
-      {routes.map((list, index) => (
-        <React.Fragment key={index}>
-          <Divider />
-          <List>
-            {list.map((item, index) => (
-              <Link to={`/app/${item.to}`} key={index}>
-                <ListItem button>
-                  <ListItemIcon>{item.Icon}</ListItemIcon>
-                  <ListItemText primary={item.text} />
-                </ListItem>
-              </Link>
-            ))}
-          </List>
-        </React.Fragment>
-      ))}
+      {Object.keys(routes).map((type) =>
+        type === currentUserType
+          ? routes[type].map((item, index) => (
+              <React.Fragment key={index}>
+                <Divider />
+                <List>
+                  <Link to={`/app/${item.to}`} key={index}>
+                    <ListItem button>
+                      <ListItemIcon>{item.Icon}</ListItemIcon>
+                      <ListItemText primary={item.text} />
+                    </ListItem>
+                  </Link>
+                </List>
+              </React.Fragment>
+            ))
+          : null,
+      )}
     </Drawer>
   );
 }

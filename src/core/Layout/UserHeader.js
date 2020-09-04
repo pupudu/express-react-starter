@@ -12,6 +12,9 @@ import {
 import { Menu } from '@material-ui/icons';
 import { drawerWidth } from './Sidebar';
 import logo from './logo.png';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import Button from '@material-ui/core/Button';
+import { fetch } from '../fetch';
 
 const useStyles = makeStyles((theme) => ({
   logo: {
@@ -38,10 +41,24 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  signOut: {
+    marginRight: '20px',
+  },
 }));
 
 export function UserHeader(props) {
   const classes = useStyles();
+  async function onSubmit() {
+    const res = await fetch({
+      url: '/api/user/logout',
+      method: 'get',
+    });
+    if (res === 'success') {
+      window.location.pathname = '/home';
+    } else {
+      console.log(res);
+    }
+  }
 
   return (
     <AppBar
@@ -62,6 +79,20 @@ export function UserHeader(props) {
         </IconButton>
         <img src={logo} alt="logo" className={classes.logo} />
         <Typography className={classes.title}></Typography>
+        <Typography component="div">
+          <Grid component="label" container alignItems="center" spacing={1}>
+            <Button
+              variant="contained"
+              color="secondary"
+              size="small"
+              className={classes.signOut}
+              onClick={onSubmit}
+              startIcon={<ExitToAppIcon />}
+            >
+              Sign Out
+            </Button>
+          </Grid>
+        </Typography>
         <Typography component="div">
           <Grid component="label" container alignItems="center" spacing={1}>
             <Grid item>Dark</Grid>

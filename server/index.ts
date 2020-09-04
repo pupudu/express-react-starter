@@ -7,6 +7,7 @@ import { internalErrorHandler, notFoundHandler } from '@core/error-handlers';
 import { DatabaseConnection } from '@core/database.connection';
 import session from 'express-session';
 import { PassportService } from './passport.service';
+import fileUpload from 'express-fileupload';
 
 const app = express();
 
@@ -18,6 +19,7 @@ const app = express();
   passportService.setup();
 
   // register core middleware
+  app.use(fileUpload());
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
 
