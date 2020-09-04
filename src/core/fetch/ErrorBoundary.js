@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Button } from '@material-ui/core';
-import { Flex } from '@chakra-ui/core';
+import { Flex } from '../components/Flex';
 
 export class ErrorBoundary extends React.Component {
   state;
@@ -19,7 +19,7 @@ export class ErrorBoundary extends React.Component {
     if (err) {
       return (
         <Container>
-          <Flex justifyContent="center" alignItems="center">
+          <Flex>
             <div>
               <h1>Oops! Something went wrong.</h1>
               {JSON.stringify(err, null, 2)}

@@ -8,7 +8,7 @@ import { uuid } from 'uuidv4';
 const stripe = new Stripe(
   'sk_test_51HGUvrDOqWcprKpuZu6vskBRg0M6PNsdvQMN0LUyIOuZi97hyNjmLyWfuKgDxiG6s3YKdgaM1a5G70KqIM1Txwpa00OWsn7Ja1',
   {
-    apiVersion: '2020-03-02',
+    apiVersion: '2020-08-27',
   },
 );
 export class UserRouter extends BaseRouter {
