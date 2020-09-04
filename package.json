@@ -4,10 +4,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "ts": "ts-node -r tsconfig-paths/register --project server/tsconfig.json",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "start:server": "yarn ts server/index.ts"
+    "start:server": "cd server && yarn start"
   },
   "eslintConfig": {
     "extends": "react-app"
