@@ -18,8 +18,9 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   homeHeading: {
-    fontFamily: 'Galada',
+    fontSize: '80px',
     textAlign: 'center',
+    fontWeight: 'bold',
   },
   homeParagraph: {
     textAlign: 'center',

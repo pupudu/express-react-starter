@@ -45,6 +45,8 @@ export const useStyles = makeStyles((theme) => ({
     textTransform: 'uppercase',
   },
   secondaryParagraph: {
+    color: 'white',
+    fontWeight: 'bold',
     textAlign: 'Left',
     textTransform: 'uppercase',
   },
@@ -269,6 +271,7 @@ export const useStyles = makeStyles((theme) => ({
 
   //Language Container
   languageContainer: {
+    backgroundColor: '#115293',
     padding: '5% 10%',
     width: '100%',
     margin: '50px 0',
@@ -278,6 +281,7 @@ export const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
   fileName: {
+    color: 'white',
     textAlign: 'center',
   },
   horizontalLine: {
@@ -287,6 +291,7 @@ export const useStyles = makeStyles((theme) => ({
     color: 'black',
   },
   containerDescription: {
+    color: 'white',
     textAlign: 'left',
   },
 }));
