@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import App from './user/App';
 import { MainHome } from './Home';
-import { ThemeProvider, CSSReset } from '@chakra-ui/core';
 import MaterialThemeProvider from 'core/Layout/theme';
 import { Layout } from 'core/Layout';
 import { UserLayout } from 'core/Layout/user';
-import { theme } from 'core/theme';
 import { FetchBoundary, useFetch } from 'core/fetch';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useMediaQuery } from '@material-ui/core';
@@ -20,17 +18,17 @@ const AppWrapper = (props) => {
   const data = useFetch({ url: '/api/user/isauthenticated' });
   if (window.location.pathname === '/') {
     window.location.pathname = '/app';
-    return <div></div>;
+    return null;
   }
   if (data.session === false) {
     if (!['/login', '/signup', '/home'].includes(window.location.pathname)) {
       window.location.pathname = '/home';
-      return <div></div>;
+      return null;
     }
   } else {
     if (['/login', '/signup', '/home'].includes(window.location.pathname)) {
       window.location.pathname = '/app';
-      return <div></div>;
+      return null;
     }
   }
 
@@ -81,7 +79,7 @@ const AppWrapper = (props) => {
   );
 };
 
-const AppSuspence = () => {
+const AppSuspense = () => {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const [darkMode, setDarkMode] = useState(prefersDarkMode);
   const toggle = () => setDarkMode(!darkMode);
@@ -89,17 +87,14 @@ const AppSuspence = () => {
     <React.StrictMode>
       <MaterialThemeProvider darkMode={darkMode}>
         <MuiPickersUtilsProvider utils={DayJsUtils}>
-          <ThemeProvider theme={theme}>
-            <CSSReset />
-            <BrowserRouter>
-              <FetchBoundary>
-                <AppWrapper toggle={toggle} darkMode={darkMode} />
-              </FetchBoundary>
-            </BrowserRouter>
-          </ThemeProvider>
+          <BrowserRouter>
+            <FetchBoundary>
+              <AppWrapper toggle={toggle} darkMode={darkMode} />
+            </FetchBoundary>
+          </BrowserRouter>
         </MuiPickersUtilsProvider>
       </MaterialThemeProvider>
     </React.StrictMode>
   );
 };
-ReactDOM.render(<AppSuspence />, document.getElementById('root'));
+ReactDOM.render(<AppSuspense />, document.getElementById('root'));

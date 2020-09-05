@@ -1,5 +1,4 @@
 import React from 'react';
-import { Box } from '@chakra-ui/core';
 import { Routes, Route } from 'react-router-dom';
 import { Dashboard } from './Dashboard';
 import { Pricing } from './Pricing';
@@ -16,7 +15,7 @@ import { Support } from './Support';
 function App() {
   return (
     <div>
-      <Box mt="1rem">
+      <div style={{ marginTop: '1rem' }}>
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/pricing" element={<Pricing />} />
@@ -30,7 +29,7 @@ function App() {
           <Route path="/allTranslations" element={<HandleTranslations />} />
           <Route path="/support" element={<Support />} />
         </Routes>
-      </Box>
+      </div>
     </div>
   );
 }
