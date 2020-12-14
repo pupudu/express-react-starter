@@ -1,3 +1,4 @@
+import './core/reset.css';
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import App from './user/App';
@@ -98,3 +99,4 @@ const AppSuspense = () => {
   );
 };
 ReactDOM.render(<AppSuspense />, document.getElementById('root'));
+

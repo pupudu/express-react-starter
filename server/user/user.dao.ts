@@ -20,6 +20,20 @@ export class UserDao extends BaseDao {
       ],
     );
   }
+  async saveFileInfo({ order_number, document_name, document_status, client_id }) {
+    return await this.query(
+      `
+        INSERT INTO document_details (order_number, document_name, document_status, client_id)
+        VALUES (?, ?, ?, ?)
+    `,
+      [
+          order_number,
+          document_name,
+          document_status,
+          client_id,
+      ],
+    );
+  }
   async hashPassword(password) {
     const salt = await bcrypt.genSalt(10);
     return await bcrypt.hash(password, salt);

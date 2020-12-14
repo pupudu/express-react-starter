@@ -17,7 +17,13 @@ import Button from '@material-ui/core/Button';
 import { fetch } from '../fetch';
 
 const useStyles = makeStyles((theme) => ({
+  vl: {
+    borderLeft: ' 2px solid #CCCCCC',
+    height: '20px',
+    marginRight: '10px',
+  },
   logo: {
+    padding: '10px',
     maxWidth: 250,
   },
   hide: {
@@ -77,7 +83,9 @@ export function UserHeader(props) {
         >
           <Menu />
         </IconButton>
-        <img src={logo} alt="logo" className={classes.logo} />
+        <a href={'/app'}>
+          <img src={logo} alt="logo" className={classes.logo} />{' '}
+        </a>
         <Typography className={classes.title}></Typography>
         <Typography component="div">
           <Grid component="label" container alignItems="center" spacing={1}>
@@ -93,13 +101,13 @@ export function UserHeader(props) {
             </Button>
           </Grid>
         </Typography>
+
+        <div className={classes.vl}></div>
         <Typography component="div">
           <Grid component="label" container alignItems="center" spacing={1}>
-            <Grid item>Dark</Grid>
             <Grid item>
               <Switch checked={!props.darkMode} onChange={props.toggleDarkMode} color="secondary" />
             </Grid>
-            <Grid item>Light</Grid>
           </Grid>
         </Typography>
       </Toolbar>

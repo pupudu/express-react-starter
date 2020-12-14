@@ -8,6 +8,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   logo: {
+    padding: '10px',
     maxWidth: 250,
     marginLeft: 50,
   },
@@ -47,11 +48,9 @@ export function Header(props) {
         <Typography className={classes.title}></Typography>
         <Typography component="div">
           <Grid component="label" container alignItems="center" spacing={1}>
-            <Grid item>Dark</Grid>
             <Grid item>
               <Switch checked={!props.darkMode} onChange={props.toggleDarkMode} color="secondary" />
             </Grid>
-            <Grid item>Light</Grid>
           </Grid>
         </Typography>
       </Toolbar>

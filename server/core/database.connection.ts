@@ -26,5 +26,7 @@ export class DatabaseConnection extends BaseModule {
       entities: [`${__dirname}/../**/*.entity.ts`],
       logging: false,
     });
+
   }
+
 }

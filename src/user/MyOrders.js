@@ -61,7 +61,7 @@ export const MyOrders = () => {
             </IconButton>
           </TableCell>
           <TableCell component="th" scope="row">
-            <Button color="primary" href="#">
+            <Button color="primary" href={`/app/order/${row.id}`}>
               {row.id}
             </Button>
           </TableCell>

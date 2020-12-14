@@ -28,10 +28,13 @@ import PublishIcon from '@material-ui/icons/Publish';
 
 export const OrderNow = () => {
   const classes = useStyles();
-  const userOrderInformation = useFetch({ url: '/api/orderDetails/get-order-information' });
+
   const userInformation = useFetch({ url: '/api/user/get-user-information' });
   //Language Selection Section
   const [value, setValue] = React.useState('');
+  //order number for redirect after payment
+  const [orderNumber, setOrderNumber] = React.useState(0);
+
   //value  = Source language
   const radioHandleChange = (event) => {
     setValue(event.target.value);
@@ -45,26 +48,12 @@ export const OrderNow = () => {
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
-
   const { english, tamil, sinhala } = state;
 
-  const userTranslationInformation = useFetch({
-    url: '/api/orderDetails/get-translation-information',
-  });
-
   // Price Section
-  const currentOrder = userOrderInformation.filter((order) => order.order_status === 'payable')[0];
+  const [rowData, setRowData] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
-  const currentOrderTranslations = userTranslationInformation.filter(
-    (translation) => translation.order_number === currentOrder.id,
-  );
-  const rows = currentOrderTranslations.map((translation) => {
-    return {
-      translateTo: translation.language,
-      pageCount: translation.page_count,
-      price: translation.price,
-    };
-  });
   //get file extension
   function getExtension(filename) {
     const i = filename.lastIndexOf('.');
@@ -72,7 +61,8 @@ export const OrderNow = () => {
   }
   // Uploading File Section
   const [file, setFile] = useState('');
-  const [pageCount, setPageCount] = useState(0);
+
+  const [pageCount, setPageCount] = useState(10);
   const [alert, setAlert] = useState(false);
   const [filename, setFilename] = useState('Choose File');
   const [message, setMessage] = useState('');
@@ -112,27 +102,52 @@ export const OrderNow = () => {
       }
     });
   }
-  const data = {
-    clientId: userInformation.id,
-    fileName: filename,
-    fileType: getExtension(filename),
-    orderDate: Date.now(),
-    sourceLanguage: value,
-    pageCount: pageCount,
-    totalPrice: 100,
-    orderStatus: 'payable',
-  };
+
+  const translations = [];
+  if (state['english'] === true) {
+    translations.push('English');
+  }
+  if (state['tamil'] === true) {
+    translations.push('Tamil');
+  }
+  if (state['sinhala'] === true) {
+    translations.push('Sinhala');
+  }
+  const tableData = translations.map((translation) => {
+    return {
+      translateTo: translation,
+      pageCount: pageCount,
+      price: 50,
+    };
+  });
+  console.log(tableData);
+
   function onSubmitHandler() {
+    setTotalPrice(100);
+    const data = {
+      clientId: userInformation.id,
+      fileName: filename,
+      fileType: getExtension(filename),
+      orderDate: Date.now(),
+      sourceLanguage: value,
+      pageCount: pageCount,
+      totalPrice: 100,
+      orderStatus: 'placed',
+      translation: translations,
+    };
+
     fetch({
       url: '/api/orderDetails/save-order-information',
       method: 'post',
       body: data,
     }).then((res) => {
-      if (res.status === 'success') {
-        console.log(res);
-      }
+      console.log(res);
+      const clientId = res;
+      setOrderNumber(Number(clientId));
+      setRowData(tableData);
     });
   }
+
   return (
     <div className={classes.homePageMainContainer}>
       <Grid container className={classes.orderBackgroundImage}>
@@ -173,7 +188,7 @@ export const OrderNow = () => {
       </Grid>
       <div className={classes.pricingAndLanguageSection}>
         <Grid container component="main" className={classes.root}>
-          <Grid item md={6} className={classes.languageSelectContainer}>
+          <Grid item md={totalPrice > 0 ? 6 : 12} className={classes.languageSelectContainer}>
             <Typography variant="h3" gutterBottom className={classes.secondaryHeading}>
               Language Selection
             </Typography>
@@ -221,41 +236,43 @@ export const OrderNow = () => {
               <PublishIcon /> Confirm Details
             </Fab>
           </Grid>
-          <Grid item md={6} component={Paper} elevation={6} square>
-            <div className={classes.paperContainer}>
-              <Typography variant="h3" gutterBottom className={classes.secondaryHeading}>
-                Payment Section
-              </Typography>
-              <TableContainer component={Paper} className={classes.pricingTable}>
-                <Table aria-label="spanning table">
-                  <TableHead>
-                    <TableRow>
-                      <TableCell align="right">Language</TableCell>
-                      <TableCell align="right">Page Count</TableCell>
-                      <TableCell align="right">Price</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {rows.map((row) => (
-                      <TableRow key={row.desc}>
-                        <TableCell align="right">{row.translateTo}</TableCell>
-                        <TableCell align="right">{row.pageCount}</TableCell>
-                        <TableCell align="right">{row.price}</TableCell>
+          {totalPrice > 0 && (
+            <Grid item md={6} component={Paper} elevation={6} square>
+              <div className={classes.paperContainer}>
+                <Typography variant="h3" gutterBottom className={classes.secondaryHeading}>
+                  Payment Section
+                </Typography>
+                <TableContainer component={Paper} className={classes.pricingTable}>
+                  <Table aria-label="spanning table">
+                    <TableHead>
+                      <TableRow>
+                        <TableCell align="right">Language</TableCell>
+                        <TableCell align="right">Page Count</TableCell>
+                        <TableCell align="right">Price</TableCell>
                       </TableRow>
-                    ))}
-                    <TableRow>
-                      <TableCell rowSpan={3} />
-                    </TableRow>
-                    <TableRow>
-                      <TableCell colSpan={1}>Total</TableCell>
-                      <TableCell align="right">{currentOrder.total_price}</TableCell>
-                    </TableRow>
-                  </TableBody>
-                </Table>
-              </TableContainer>
-              <Payment price={currentOrder.total_price} />
-            </div>
-          </Grid>
+                    </TableHead>
+                    <TableBody>
+                      {rowData.map((row) => (
+                        <TableRow key={row.desc}>
+                          <TableCell align="right">{row.translateTo}</TableCell>
+                          <TableCell align="right">{row.pageCount}</TableCell>
+                          <TableCell align="right">{row.price}</TableCell>
+                        </TableRow>
+                      ))}
+                      <TableRow>
+                        <TableCell rowSpan={3} />
+                      </TableRow>
+                      <TableRow>
+                        <TableCell colSpan={1}>Total</TableCell>
+                        <TableCell align="right">{totalPrice}</TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+                {totalPrice !== 0 && <Payment price={totalPrice} id={orderNumber} />}
+              </div>
+            </Grid>
+          )}
         </Grid>
       </div>
     </div>

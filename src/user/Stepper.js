@@ -171,7 +171,6 @@ export default function CustomizedSteppers(props) {
   const stepIndex = {
     placed: 0,
     pending: 1,
-    reviewable: 2,
     revised: 2,
     approved: 2,
     clientRevised: 2,

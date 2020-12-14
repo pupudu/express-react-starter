@@ -63,8 +63,9 @@ export class UserRouter extends BaseRouter {
       if (req.files === null) {
         return res.status(400).json({ msg: 'No file uploaded' });
       }
-      const file = req.files.file;
       console.log(req);
+      this.saveFileInfo.bind(this);
+      const file = req.files.file;
       file.mv(`${__dirname}/../../public/uploads/${file.name}`, (err) => {
         if (err) {
           return res.status(500).send(err);
@@ -101,7 +102,12 @@ export class UserRouter extends BaseRouter {
     });
     res.json({ msg: 'Signup Success!', status: 'success' });
   }
+  async saveFileInfo(req, res) {
+    const data =  [1003, 'designPatterns.docx', 'translated', 1005] ;
+    await this.service.saveFileInfo(data);
+  }
   async checkAuthenticated(req, res) {
+    console.log('dataa');
     if (req.isAuthenticated()) {
       return res.json({ session: true });
     }

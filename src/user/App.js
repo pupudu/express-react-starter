@@ -25,7 +25,7 @@ function App() {
           <Route path="/activeJobs" element={<ActiveJobs />} />
           <Route path="/availableJobs" element={<AvailableJobs />} />
           <Route path="/archivedJobs" element={<ArchivedJobs />} />
-          <Route path="/order" element={<Order />} />
+          <Route path="/order/:orderId" element={<Order />} />
           <Route path="/allTranslations" element={<HandleTranslations />} />
           <Route path="/support" element={<Support />} />
         </Routes>

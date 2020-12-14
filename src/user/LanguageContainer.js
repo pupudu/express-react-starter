@@ -5,7 +5,8 @@ import { useStyles } from './styles';
 import Grid from '@material-ui/core/Grid';
 import InputIcon from '@material-ui/icons/Input';
 import { Button } from '@material-ui/core';
-import { fetch } from '../core/fetch';
+import { UploadFileButton } from './UploadFileButton';
+import { fetch, useFetch } from '../core/fetch';
 
 export default function LanguageContainer(props) {
   const classes = useStyles();
@@ -22,10 +23,13 @@ export default function LanguageContainer(props) {
             startIcon={<InputIcon />}
             onClick={() => {
               fetch({
-                url: '/api/user/upload',
+                url: '/api/orderDetails/delete-order-information',
                 method: 'post',
-                body: 'Disabled',
+                body: ['1', props.orderNumber, props.language],
               });
+              setTimeout(() => {
+                window.location.reload(true);
+              }, 3000);
             }}
           >
             Cancel
@@ -46,10 +50,6 @@ export default function LanguageContainer(props) {
       },
       approved: {
         label: 'Your translation has started!',
-        child: <div></div>,
-      },
-      reviewable: {
-        label: 'Your translation has completed!',
         child: (
           <div>
             <Button
@@ -60,10 +60,13 @@ export default function LanguageContainer(props) {
               startIcon={<InputIcon />}
               onClick={() => {
                 fetch({
-                  url: '/api/user/upload',
+                  url: '/api/orderDetails/update-translation-status',
                   method: 'post',
-                  body: 'revised',
+                  body: ['clientRevised', props.orderNumber, props.language],
                 });
+                setTimeout(() => {
+                  window.location.reload(true);
+                }, 3000);
               }}
             >
               Revise
@@ -76,10 +79,18 @@ export default function LanguageContainer(props) {
               startIcon={<InputIcon />}
               onClick={() => {
                 fetch({
-                  url: '/api/user/upload',
+                  url: '/api/orderDetails/update-order-status',
                   method: 'post',
-                  body: 'approved',
+                  body: ['approved', props.orderNumber],
                 });
+                fetch({
+                  url: '/api/orderDetails/update-translation-status',
+                  method: 'post',
+                  body: ['clientApproved', props.orderNumber, props.language],
+                });
+                setTimeout(() => {
+                  window.location.reload(true);
+                }, 3000);
               }}
             >
               Approve
@@ -108,39 +119,96 @@ export default function LanguageContainer(props) {
             startIcon={<InputIcon />}
             onClick={() => {
               fetch({
-                url: '/api/user/upload',
+                url: '/api/orderDetails/update-order-status',
                 method: 'post',
-                body: 'pending',
+                body: ['pending', props.orderNumber],
               });
+              fetch({
+                url: '/api/orderDetails/update-translation-status',
+                method: 'post',
+                body: ['pending', props.orderNumber, props.language],
+              });
+              fetch({
+                url: '/api/orderDetails/add-translator',
+                method: 'post',
+                body: [props.orderNumber, props.language],
+              });
+              setTimeout(() => {
+                window.location.reload(true);
+              }, 3000);
             }}
           >
             Accept
           </Button>
         ),
       },
+      // methana
       pending: {
         label: 'Upload your translated file here!',
-        child: <div>Submit button and a upload button</div>,
+        child: (
+          <div>
+            <UploadFileButton />
+            <Button
+              variant="contained"
+              color="secondary"
+              size="large"
+              className={classes.button}
+              startIcon={<InputIcon />}
+              onClick={() => {
+                fetch({
+                  url: '/api/orderDetails/update-translation-status',
+                  method: 'post',
+                  body: ['translated', props.orderNumber, props.language],
+                });
+                setTimeout(() => {
+                  window.location.reload(true);
+                }, 3000);
+              }}
+            >
+              Submit
+            </Button>
+          </div>
+        ),
       },
       translated: {
         label:
           'Translation has not been approved by the client yet. Wait for them to accept your translation!',
         child: <div></div>,
       },
+      //methana
       revised: {
         label: 'You have been asked for a revision',
-        child: <div>Submit button and a upload button</div>,
+        child: (
+          <div>
+            <UploadFileButton />
+            <Button
+              variant="contained"
+              color="secondary"
+              size="large"
+              className={classes.button}
+              startIcon={<InputIcon />}
+              onClick={() => {
+                fetch({
+                  url: '/api/orderDetails/update-translation-status',
+                  method: 'post',
+                  body: ['translated', props.orderNumber, props.language],
+                });
+                setTimeout(() => {
+                  window.location.reload(true);
+                }, 3000);
+              }}
+            >
+              Submit
+            </Button>
+          </div>
+        ),
       },
       approved: {
         label:
           'Translation has not been approved by the client yet. Wait for them to accept your translation!',
         child: <div></div>,
       },
-      reviewable: {
-        label:
-          'Translation has not been approved by the client yet. Wait for them to accept your translation!',
-        child: <div></div>,
-      },
+
       clientApproved: {
         label: 'Your translation has been approved by the client.Thank you!',
         child: <div></div>,
@@ -160,6 +228,7 @@ export default function LanguageContainer(props) {
         label: 'Translation has started!',
         child: <div></div>,
       },
+      //methana
       translated: {
         label: 'Translation has completed!',
         child: (
@@ -172,10 +241,18 @@ export default function LanguageContainer(props) {
               startIcon={<InputIcon />}
               onClick={() => {
                 fetch({
-                  url: '/api/user/upload',
+                  url: '/api/orderDetails/update-order-status',
                   method: 'post',
-                  body: 'revised',
+                  body: ['reviewable', props.orderNumber],
                 });
+                fetch({
+                  url: '/api/orderDetails/update-translation-status',
+                  method: 'post',
+                  body: ['pending', props.orderNumber, props.language],
+                });
+                setTimeout(() => {
+                  window.location.reload(true);
+                }, 3000);
               }}
             >
               Revise
@@ -188,13 +265,16 @@ export default function LanguageContainer(props) {
               startIcon={<InputIcon />}
               onClick={() => {
                 fetch({
-                  url: '/api/user/upload',
+                  url: '/api/orderDetails/update-translation-status',
                   method: 'post',
-                  body: 'approved',
+                  body: ['approved', props.orderNumber, props.language],
                 });
+                setTimeout(() => {
+                  window.location.reload(true);
+                }, 3000);
               }}
             >
-              Approve + Upload button with submit
+              Approve
             </Button>
           </div>
         ),
@@ -207,11 +287,7 @@ export default function LanguageContainer(props) {
         label: 'You have approved the translation. Wait for the client to accept the translation!',
         child: <div></div>,
       },
-      reviewable: {
-        label:
-          'Translation has not been approved by the client yet. Wait for them to accept the translation!',
-        child: <div></div>,
-      },
+
       clientApproved: {
         label: 'Translation has been accepted by the client. Thank you!',
         child: <div></div>,
@@ -229,10 +305,13 @@ export default function LanguageContainer(props) {
               startIcon={<InputIcon />}
               onClick={() => {
                 fetch({
-                  url: '/api/user/upload',
+                  url: '/api/orderDetails/update-translation-status',
                   method: 'post',
-                  body: 'revised',
+                  body: ['pending', props.orderNumber, props.language],
                 });
+                setTimeout(() => {
+                  window.location.reload(true);
+                }, 3000);
               }}
             >
               Revise
@@ -245,13 +324,16 @@ export default function LanguageContainer(props) {
               startIcon={<InputIcon />}
               onClick={() => {
                 fetch({
-                  url: '/api/user/upload',
+                  url: '/api/orderDetails/update-translation-status',
                   method: 'post',
-                  body: 'approved',
+                  body: ['approved', props.orderNumber, props.language],
                 });
+                setTimeout(() => {
+                  window.location.reload(true);
+                }, 3000);
               }}
             >
-              Resubmit - upload button
+              Approve
             </Button>
           </div>
         ),
@@ -260,13 +342,12 @@ export default function LanguageContainer(props) {
   };
   const type = props.type;
   const orderStatus = props.orderStatus;
-
   return (
     <Paper className={classes.languageContainer} elevation={3}>
       <Grid container>
         <Grid item sm={8} container>
           <Grid item container direction="column" alignItems="flex-start">
-            <Typography variant="h4" gutterBottom className={classes.secondaryParagraph}>
+            <Typography variant="h4" gutterBottom className={classes.secondaryyParagraph}>
               {props.language} Translation
             </Typography>
             <hr className={classes.horizontalLine} />

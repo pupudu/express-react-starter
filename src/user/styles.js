@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import user1 from '../images/user1.jpg';
+import translater from '../images/translater.jpg';
 import orderImage from '../images/orderImage.jpg';
 import csImage from '../images/csImage.jpg';
 import user2 from '../images/user2.jpg';
@@ -45,6 +46,11 @@ export const useStyles = makeStyles((theme) => ({
     textTransform: 'uppercase',
   },
   secondaryParagraph: {
+    fontWeight: 'bold',
+    textAlign: 'Left',
+    textTransform: 'uppercase',
+  },
+  secondaryyParagraph: {
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'Left',
@@ -60,6 +66,16 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     height: '100vh',
     backgroundImage: `url(${user1})`,
+    backgroundSize: 'stretched',
+    backgroundPosition: 'center',
+  },
+  mainImageTranslater: {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: '150px 5% 0',
+    alignItems: 'center',
+    height: '100vh',
+    backgroundImage: `url(${translater})`,
     backgroundSize: 'stretched',
     backgroundPosition: 'center',
   },
@@ -130,6 +146,7 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: '5px',
   },
   orderDetailsSubmitButton: {
+    width: '200px',
     margin: '30px',
   },
   stripeButton: {
@@ -243,6 +260,7 @@ export const useStyles = makeStyles((theme) => ({
   chooseFileButton: {
     marginLeft: '70%',
   },
+
 
   // All Jobs
   allJobsMainContainer: {

@@ -2,9 +2,10 @@ import { useStyles } from './styles';
 import React, { useState } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import Alert from '@material-ui/lab/Alert';
-import { fetch } from '../core/fetch';
+import { fetch, useFetch } from '../core/fetch';
 
 export const Payment = (props) => {
+  console.log(props);
   const classes = useStyles();
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState({});
@@ -13,6 +14,10 @@ export const Payment = (props) => {
     name: 'Translation',
     price: props.price,
   });
+  // setProduct({
+  //   name: 'Translation',
+  //   price: props.price,
+  // });
   async function handleToken(token, addresses) {
     const data = { token, product };
     const response = await fetch({
@@ -24,7 +29,7 @@ export const Payment = (props) => {
     if (response === 'success') {
       setAlertMessage({ message: 'Success! Check email for details', type: 'success' });
       setShowAlert(true);
-      window.location.pathname = '/app/order';
+      window.location.pathname = `/app/myOrders`;
     } else {
       setAlertMessage({ message: 'Something went wrong', type: 'error' });
       setShowAlert(true);

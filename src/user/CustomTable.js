@@ -17,24 +17,12 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 
 export const CustomTable = () => {
-  const data = useFetch({ url: '/api/orderDetails/showFiles' });
-  const languages = ['sinhala', 'english', 'tamil'];
+  const userOrderInformation = useFetch({ url: '/api/orderDetails/get-all-order-information' });
+  const userTranslationInformation = useFetch({
+    url: '/api/orderDetails/get-translation-information',
+  });
   const classes = useStyles();
-  function createData(
-    id,
-    orderDate,
-    orderStatus,
-    sourceLanguage,
-    fileType,
-    pageCount,
-    sinhalaTranslation,
-    englishTranslation,
-    tamilTranslation,
-    sinhalaTranslator,
-    englishTranslator,
-    tamilTranslator,
-    price,
-  ) {
+  function createData(id, orderDate, orderStatus, sourceLanguage, fileType, pageCount, totalPrice) {
     return {
       id,
       orderDate,
@@ -42,45 +30,23 @@ export const CustomTable = () => {
       sourceLanguage,
       fileType,
       pageCount,
-      sinhalaTranslation,
-      englishTranslation,
-      tamilTranslation,
-      sinhalaTranslator,
-      englishTranslator,
-      tamilTranslator,
-      other: languages
-        .map((language) => {
-          if (language === 'english' && englishTranslation === 'true') {
-            return { translateTo: 'English', translator: englishTranslator, price: price };
-          } else if (language === 'sinhala' && sinhalaTranslation === 'true') {
-            return { translateTo: 'Sinhala', translator: sinhalaTranslator, price: price };
-          } else if (language === 'tamil' && tamilTranslation === 'true') {
-            return { translateTo: 'Tamil', translator: tamilTranslator, price: price };
-          }
-        })
-        .filter((item) => {
-          return item !== undefined;
-        }),
+      totalPrice,
+      other: userTranslationInformation.filter((translation) => translation.order_number === id),
     };
   }
 
-  const rows = data.map((order) => {
+  const rows = userOrderInformation.map((order) => {
     return createData(
       order.id,
-      order.orderDate,
-      order.orderStatus,
-      order.sourceLanguage,
-      order.fileType,
-      order.pageCount,
-      order.sinhalaTranslation,
-      order.englishTranslation,
-      order.tamilTranslation,
-      order.sinhalaTranslator,
-      order.englishTranslator,
-      order.tamilTranslator,
-      order.price,
+      order.order_date,
+      order.order_status,
+      order.source_language,
+      order.file_type,
+      order.page_count,
+      order.total_price,
     );
   });
+
   function Row(props) {
     const { row } = props;
     const [open, setOpen] = React.useState(false);
@@ -94,7 +60,7 @@ export const CustomTable = () => {
             </IconButton>
           </TableCell>
           <TableCell component="th" scope="row">
-            <Button color="primary" href="#">
+            <Button color="primary" href={`/app/order/${row.id}`}>
               {row.id}
             </Button>
           </TableCell>
@@ -103,43 +69,13 @@ export const CustomTable = () => {
           <TableCell align="right">{row.sourceLanguage}</TableCell>
           <TableCell align="right">{row.fileType}</TableCell>
           <TableCell align="right">{row.pageCount}</TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-            <Collapse in={open} timeout="auto" unmountOnExit>
-              <Box margin={1}>
-                <Typography variant="h6" gutterBottom component="div">
-                  Other Details
-                </Typography>
-                <Table size="small" aria-label="purchases">
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>Translate To</TableCell>
-                      <TableCell>Translator</TableCell>
-                      <TableCell align="right">Price</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {row.other.map((otherRow) => (
-                      <TableRow>
-                        <TableCell component="th" scope="row">
-                          {otherRow.translateTo}
-                        </TableCell>
-                        <TableCell>{otherRow.translator}</TableCell>
-                        <TableCell align="right">{otherRow.price}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </Box>
-            </Collapse>
-          </TableCell>
+          <TableCell align="right">{row.totalPrice}</TableCell>
         </TableRow>
       </React.Fragment>
     );
   }
   return (
-    <div>
+    <div className={classes.myOrdersMainContainer}>
       <TableContainer component={Paper}>
         <Table aria-label="collapsible table">
           <TableHead>
@@ -151,6 +87,7 @@ export const CustomTable = () => {
               <TableCell align="right">Source Language</TableCell>
               <TableCell align="right">File Type</TableCell>
               <TableCell align="right">Page Count</TableCell>
+              <TableCell align="right">Total price</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

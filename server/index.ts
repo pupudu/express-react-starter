@@ -35,7 +35,6 @@ const app = express();
   //passport middleware
   app.use(passport.initialize());
   app.use(passport.session());
-
   // register application routes
   app.use('/api', await RootRouter.getRouter());
 

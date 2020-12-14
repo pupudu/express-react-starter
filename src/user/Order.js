@@ -5,14 +5,22 @@ import Typography from '@material-ui/core/Typography';
 import CustomizedSteppers from './Stepper';
 import LanguageContainer from './LanguageContainer';
 import { useFetch } from '../core/fetch';
+import { useParams } from 'react-router-dom';
 
-export const Order = (props) => {
+export const Order = () => {
+  const params = useParams();
   const classes = useStyles();
-  const userOrderInformation = useFetch({ url: '/api/orderDetails/get-order-information' });
-  const currentOrder = userOrderInformation.filter((order) => order.id === 1003)[0];
-  const userTranslationInformation = useFetch({
-    url: '/api/orderDetails/get-translation-information',
-  }).filter((translation) => translation.order_number === currentOrder.id);
+  const allOrderInformation = useFetch({ url: '/api/orderDetails/get-all-order-information' });
+  const allTranslationInformation = useFetch({
+    url: '/api/orderDetails/get-all-translation-information',
+  });
+  const currentOrder = allOrderInformation.filter(
+    (order) => order.id === Number(params.orderId),
+  )[0];
+  console.log(currentOrder);
+  const currentTranslations = allTranslationInformation.filter(
+    (translation) => translation.order_number === currentOrder.id,
+  );
   const userInformation = useFetch({ url: '/api/user/get-user-information' });
 
   return (
@@ -27,13 +35,15 @@ export const Order = (props) => {
         >
           Order #{currentOrder.id} ({currentOrder.order_date})
         </Typography>
-        <CustomizedSteppers status={userOrderInformation.orderStatus} />
-        {userTranslationInformation.map((translation) => {
+        <CustomizedSteppers status={currentOrder.orderStatus} />
+        {console.log(currentOrder.id)}
+        {currentTranslations.map((translation) => {
           return (
             <LanguageContainer
               language={translation.language}
               fileName={currentOrder.file_name}
               orderStatus={translation.translation_status}
+              orderNumber={currentOrder.id}
               type={userInformation.signinAs}
             />
           );
